@@ -1,0 +1,49 @@
+.favorites {
+  padding: 24px 0;
+}
+
+.favorites-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 32px;
+  color: #333;
+  text-align: center;
+}
+
+.favorites-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+  font-size: 1.2rem;
+  color: #666;
+}
+
+.favorites-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 24px;
+}
+
+.favorites-empty {
+  text-align: center;
+  padding: 48px;
+  color: #666;
+}
+
+.favorites-empty p {
+  font-size: 1.1rem;
+  margin: 8px 0;
+}
+
+@media (max-width: 768px) {
+  .favorites-title {
+    font-size: 2rem;
+  }
+
+  .favorites-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+

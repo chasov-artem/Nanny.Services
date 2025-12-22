@@ -1,0 +1,102 @@
+.filters {
+  background: white;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  align-items: flex-end;
+}
+
+.filters-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+  min-width: 200px;
+}
+
+.filters-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.filters-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.filters-button {
+  flex: 1;
+  padding: 8px 16px;
+  border: 2px solid #ddd;
+  background: white;
+  color: #333;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.filters-button:hover {
+  border-color: #667eea;
+  color: #667eea;
+}
+
+.filters-button.active {
+  background-color: #667eea;
+  border-color: #667eea;
+  color: white;
+}
+
+.filters-select {
+  padding: 8px 12px;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  background: white;
+  color: #333;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.filters-select:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.filters-clear {
+  padding: 8px 16px;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  align-self: flex-end;
+}
+
+.filters-clear:hover {
+  background-color: #c82333;
+}
+
+@media (max-width: 768px) {
+  .filters {
+    flex-direction: column;
+  }
+
+  .filters-group {
+    width: 100%;
+  }
+
+  .filters-clear {
+    align-self: stretch;
+  }
+}
+

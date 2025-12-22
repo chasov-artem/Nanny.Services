@@ -1,0 +1,217 @@
+.hero {
+  min-height: 100vh;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+
+.heroLeft {
+  flex: 0 0 40%;
+  background-color: #F03F3B;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 60px 80px;
+  position: relative;
+  z-index: 1;
+}
+
+.heroContent {
+  max-width: 500px;
+}
+
+.heroTitle {
+  font-size: 64px;
+  font-weight: 700;
+  color: white;
+  margin: 0 0 24px 0;
+  line-height: 1.2;
+}
+
+.heroSubtitle {
+  font-size: 24px;
+  color: white;
+  margin: 0 0 48px 0;
+  line-height: 1.4;
+  opacity: 0.95;
+}
+
+.heroButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 32px;
+  background-color: white;
+  color: #374151;
+  text-decoration: none;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: 600;
+  border: none;
+  transition: all 0.3s;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.heroButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.heroButtonIcon {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+}
+
+.heroRight {
+  flex: 0 0 60%;
+  position: relative;
+  background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+  background-image: url('/hero.png');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.heroRight::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+
+.heroStatsCard {
+  position: absolute;
+  bottom: 40px;
+  right: 40px;
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  max-width: 280px;
+  z-index: 10;
+}
+
+.heroStatsIcon {
+  width: 48px;
+  height: 48px;
+  background-color: #F03F3B;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.heroStatsIcon svg {
+  width: 24px;
+  height: 24px;
+  color: white;
+}
+
+.heroStatsContent {
+  flex: 1;
+}
+
+.heroStatsLabel {
+  font-size: 14px;
+  color: #666;
+  margin: 0 0 4px 0;
+}
+
+.heroStatsNumber {
+  font-size: 32px;
+  font-weight: 700;
+  color: #333;
+  margin: 0;
+}
+
+@media (max-width: 1024px) {
+  .hero {
+    flex-direction: column;
+  }
+
+  .heroLeft {
+    padding: 40px;
+    min-height: 50vh;
+  }
+
+  .heroTitle {
+    font-size: 48px;
+  }
+
+  .heroSubtitle {
+    font-size: 20px;
+  }
+
+  .heroRight {
+    min-height: 50vh;
+  }
+
+  .heroStatsCard {
+    bottom: 20px;
+    right: 20px;
+    padding: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .heroLeft {
+    padding: 32px 20px;
+  }
+
+  .heroTitle {
+    font-size: 36px;
+    margin-bottom: 16px;
+  }
+
+  .heroSubtitle {
+    font-size: 18px;
+    margin-bottom: 32px;
+  }
+
+  .heroButton {
+    padding: 14px 28px;
+    font-size: 16px;
+  }
+
+  .heroStatsCard {
+    bottom: 16px;
+    right: 16px;
+    padding: 16px;
+    max-width: 240px;
+  }
+
+  .heroStatsNumber {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .heroTitle {
+    font-size: 28px;
+  }
+
+  .heroSubtitle {
+    font-size: 16px;
+  }
+
+  .heroStatsCard {
+    position: relative;
+    bottom: auto;
+    right: auto;
+    margin: 20px;
+    max-width: 100%;
+  }
+}
+

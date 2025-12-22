@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { logOut } from '../../services/auth';
 import AuthModal from '../AuthModal/AuthModal';
@@ -9,6 +9,8 @@ const Layout = ({ children }) => {
   const { user, loading } = useAuth();
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
 
   const handleLogout = async () => {
     try {
@@ -25,44 +27,48 @@ const Layout = ({ children }) => {
 
   return (
     <div className="layout">
-      <header className="layout-header">
-        <nav className="layout-nav">
-          <Link to="/" className="layout-logo">
-            Nanny Services
-          </Link>
-          <div className="layout-links">
-            <Link to="/" className="layout-link">
-              Home
+      {!isHomePage && (
+        <header className="layout-header">
+          <nav className="layout-nav">
+            <Link to="/" className="layout-logo">
+              Nanny Services
             </Link>
-            <Link to="/nannies" className="layout-link">
-              Nannies
-            </Link>
-            {user && (
-              <Link to="/favorites" className="layout-link">
-                Favorites
+            <div className="layout-links">
+              <Link to="/" className="layout-link">
+                Home
               </Link>
-            )}
-          </div>
-          <div className="layout-auth">
-            {user ? (
-              <>
-                <span className="layout-user">{user.displayName || user.email}</span>
-                <button onClick={handleLogout} className="layout-button">
-                  Logout
+              <Link to="/nannies" className="layout-link">
+                Nannies
+              </Link>
+              {user && (
+                <Link to="/favorites" className="layout-link">
+                  Favorites
+                </Link>
+              )}
+            </div>
+            <div className="layout-auth">
+              {user ? (
+                <>
+                  <span className="layout-user">{user.displayName || user.email}</span>
+                  <button onClick={handleLogout} className="layout-button">
+                    Logout
+                  </button>
+                </>
+              ) : (
+                <button
+                  onClick={() => setIsAuthModalOpen(true)}
+                  className="layout-button"
+                >
+                  Sign In
                 </button>
-              </>
-            ) : (
-              <button
-                onClick={() => setIsAuthModalOpen(true)}
-                className="layout-button"
-              >
-                Sign In
-              </button>
-            )}
-          </div>
-        </nav>
-      </header>
-      <main className="layout-main">{children}</main>
+              )}
+            </div>
+          </nav>
+        </header>
+      )}
+      <main className={isHomePage ? 'layout-main-full' : 'layout-main'}>
+        {children}
+      </main>
       <AuthModal
         isOpen={isAuthModalOpen}
         onClose={() => setIsAuthModalOpen(false)}

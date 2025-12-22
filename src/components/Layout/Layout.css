@@ -89,6 +89,12 @@
   padding: 2rem;
 }
 
+.layout-main-full {
+  flex: 1;
+  width: 100%;
+  padding: 0;
+}
+
 @media (max-width: 768px) {
   .layout-nav {
     flex-direction: column;

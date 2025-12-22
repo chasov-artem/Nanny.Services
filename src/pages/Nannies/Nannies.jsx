@@ -42,7 +42,11 @@ const Nannies = () => {
     try {
       setLoadingMore(true);
       const result = await getNannies(3, lastKey);
-      setNannies((prev) => [...prev, ...result.nannies]);
+      setNannies((prev) => {
+        const existingIds = new Set(prev.map(n => n.id));
+        const newNannies = result.nannies.filter(n => !existingIds.has(n.id));
+        return [...prev, ...newNannies];
+      });
       setLastKey(result.lastKey);
       setHasMore(result.lastKey !== null);
     } catch (error) {
@@ -52,8 +56,13 @@ const Nannies = () => {
     }
   };
 
-  const applyFiltersAndSort = async () => {
-    let filtered = [...nannies];
+  const applyFiltersAndSort = () => {
+    // Видаляємо дублікати за ID
+    const uniqueNannies = Array.from(
+      new Map(nannies.map(nanny => [nanny.id, nanny])).values()
+    );
+    
+    let filtered = [...uniqueNannies];
 
     if (filterConfig.price) {
       filtered = filtered.filter((nanny) => {
@@ -97,7 +106,11 @@ const Nannies = () => {
     if (config.type && nannies.length < 10) {
       try {
         const allNannies = await getAllNannies();
-        setNannies(allNannies);
+        // Видаляємо дублікати
+        const uniqueNannies = Array.from(
+          new Map(allNannies.map(nanny => [nanny.id, nanny])).values()
+        );
+        setNannies(uniqueNannies);
       } catch (error) {
         console.error('Error loading all nannies:', error);
       }
@@ -109,7 +122,11 @@ const Nannies = () => {
     if (config.price && nannies.length < 10) {
       try {
         const allNannies = await getAllNannies();
-        setNannies(allNannies);
+        // Видаляємо дублікати
+        const uniqueNannies = Array.from(
+          new Map(allNannies.map(nanny => [nanny.id, nanny])).values()
+        );
+        setNannies(uniqueNannies);
       } catch (error) {
         console.error('Error loading all nannies:', error);
       }

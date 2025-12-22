@@ -20,7 +20,7 @@ export const getNannies = async (limit = 3, lastKey = null) => {
         nanniesRef,
         orderByKey(),
         startAt(lastKey),
-        limitToFirst(limit + 1)
+        limitToFirst(limit + 2)
       );
     } else {
       nanniesQuery = query(nanniesRef, orderByKey(), limitToFirst(limit + 1));
@@ -37,6 +37,11 @@ export const getNannies = async (limit = 3, lastKey = null) => {
       nannies.push({ id: child.key, ...child.val() });
     });
 
+    // Якщо є lastKey, пропускаємо перший елемент (бо startAt включає його)
+    if (lastKey && nannies.length > 0 && nannies[0].id === lastKey) {
+      nannies.shift();
+    }
+
     const hasMore = nannies.length > limit;
     if (hasMore) {
       nannies.pop();
@@ -44,7 +49,8 @@ export const getNannies = async (limit = 3, lastKey = null) => {
 
     return {
       nannies,
-      lastKey: hasMore ? nannies[nannies.length - 1].id : null,
+      lastKey:
+        hasMore && nannies.length > 0 ? nannies[nannies.length - 1].id : null,
     };
   } catch (error) {
     console.error("Error in getNannies:", error);

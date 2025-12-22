@@ -1,16 +1,162 @@
-# React + Vite
+# Nanny Services
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Застосунок для компанії, що пропонує послуги нянь. Дозволяє користувачам переглядати профілі нянь, додавати їх в обрані та записуватися на особисту зустріч.
 
-Currently, two official plugins are available:
+## 🚀 Основні можливості
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Авторизація** - реєстрація та вхід через Firebase Authentication
+- **Перегляд нянь** - список нянь з детальною інформацією
+- **Фільтрація та сортування** - за ціною, рейтингом, алфавітом
+- **Обрані** - збереження улюблених нянь (тільки для авторизованих користувачів)
+- **Запис на зустріч** - форма для запису на особисту зустріч з нянею
+- **Адаптивний дизайн** - працює на мобільних, планшетах та десктопах
 
-## React Compiler
+## 🛠 Технології
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **React 19** - бібліотека для побудови UI
+- **Vite** - інструмент збірки та розробки
+- **React Router** - маршрутизація
+- **Firebase Authentication** - авторизація користувачів
+- **Firebase Realtime Database** - зберігання даних про нянь та обраних
+- **React Hook Form** - робота з формами
+- **Yup** - валідація форм
+- **CSS** - стилізація компонентів
 
-## Expanding the ESLint configuration
+## 📋 Вимоги
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Node.js 18+ 
+- npm або yarn
+- Firebase проект з налаштованими Authentication та Realtime Database
+
+## 🔧 Встановлення та запуск
+
+1. Клонуйте репозиторій:
+```bash
+git clone https://github.com/chasov-artem/Nanny.Services.git
+cd Nanny.Services
+```
+
+2. Встановіть залежності:
+```bash
+npm install
+```
+
+3. Створіть файл `.env` в корені проекту з наступними змінними:
+```env
+VITE_FIREBASE_API_KEY=your_api_key
+VITE_FIREBASE_AUTH_DOMAIN=your_auth_domain
+VITE_FIREBASE_DATABASE_URL=your_database_url
+VITE_FIREBASE_PROJECT_ID=your_project_id
+VITE_FIREBASE_STORAGE_BUCKET=your_storage_bucket
+VITE_FIREBASE_MESSAGING_SENDER_ID=your_messaging_sender_id
+VITE_FIREBASE_APP_ID=your_app_id
+```
+
+4. Запустіть dev сервер:
+```bash
+npm run dev
+```
+
+5. Відкрийте браузер на `http://localhost:5173`
+
+## 📦 Налаштування Firebase
+
+1. Створіть проект у [Firebase Console](https://console.firebase.google.com/)
+2. Увімкніть **Authentication** (Email/Password)
+3. Створіть **Realtime Database** (режим тестування для початку)
+4. Налаштуйте правила безпеки:
+```json
+{
+  "rules": {
+    "nannies": {
+      ".read": true,
+      ".write": false
+    },
+    "users": {
+      "$uid": {
+        "favorites": {
+          ".read": "$uid === auth.uid",
+          ".write": "$uid === auth.uid"
+        }
+      }
+    }
+  }
+}
+```
+
+5. Імпортуйте дані нянь:
+   - Відкрийте `http://localhost:5173/import-data.html`
+   - Натисніть "Import Nannies"
+   - Або імпортуйте вручну через Firebase Console
+
+## 📱 Структура проекту
+
+```
+src/
+├── components/          # Переісні компоненти
+│   ├── AuthModal/     # Модальне вікно авторизації
+│   ├── NannyCard/     # Картка няні
+│   ├── AppointmentModal/ # Модальне вікно запису
+│   ├── Filters/       # Компонент фільтрів
+│   └── Layout/        # Layout з навігацією
+├── pages/             # Сторінки
+│   ├── Home/          # Головна сторінка
+│   ├── Nannies/       # Сторінка зі списком нянь
+│   └── Favorites/     # Сторінка обраних
+├── services/          # Сервіси для роботи з Firebase
+│   ├── firebase.js    # Конфігурація Firebase
+│   ├── auth.js        # Функції авторизації
+│   └── database.js    # Функції роботи з БД
+├── context/           # React Context
+│   └── AuthContext.jsx # Контекст авторизації
+└── utils/             # Допоміжні функції
+    └── validation.js  # Схеми валідації Yup
+```
+
+## 🎨 Особливості
+
+- **Пагінація** - початкове відображення 3 карток, можливість завантажити більше
+- **Фільтрація** - за ціною (діапазони)
+- **Сортування** - за ім'ям (A-Z / Z-A) та рейтингом (від низького до високого / від високого до низького)
+- **Приватні роути** - сторінка Favorites доступна тільки авторизованим користувачам
+- **Валідація форм** - всі форми мають валідацію через Yup
+- **Responsive дизайн** - адаптивна верстка від 320px до 1440px
+
+## 📄 Макет
+
+Макет проекту доступний за посиланням:
+https://www.figma.com/file/u36ajEOsnwio2GDGiabVPD/Nanny-Sevices
+
+## 🚢 Деплой
+
+### Netlify
+
+1. Підключіть репозиторій до Netlify
+2. Додайте змінні оточення з `.env` файлу
+3. Build command: `npm run build`
+4. Publish directory: `dist`
+
+### GitHub Pages
+
+1. Додайте в `package.json`:
+```json
+"scripts": {
+  "predeploy": "npm run build",
+  "deploy": "gh-pages -d dist"
+}
+```
+
+2. Встановіть gh-pages: `npm install --save-dev gh-pages`
+3. Запустіть: `npm run deploy`
+
+## 📝 Технічне завдання
+
+Детальне ТЗ доступне в плані розробки проекту.
+
+## 👤 Автор
+
+chasov-artem
+
+## 📄 Ліцензія
+
+MIT

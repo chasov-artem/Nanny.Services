@@ -8,46 +8,68 @@ import {
   limitToFirst,
   startAt,
   orderByKey,
-  orderByChild,
 } from "firebase/database";
 
 export const getNannies = async (limit = 3, lastKey = null) => {
-  const nanniesRef = ref(database, "nannies");
-  let nanniesQuery;
+  try {
+    const nanniesRef = ref(database, "nannies");
+    let nanniesQuery;
 
-  if (lastKey) {
-    nanniesQuery = query(
-      nanniesRef,
-      orderByKey(),
-      startAt(lastKey),
-      limitToFirst(limit + 1)
-    );
-  } else {
-    nanniesQuery = query(nanniesRef, orderByKey(), limitToFirst(limit + 1));
+    if (lastKey) {
+      nanniesQuery = query(
+        nanniesRef,
+        orderByKey(),
+        startAt(lastKey),
+        limitToFirst(limit + 1)
+      );
+    } else {
+      nanniesQuery = query(nanniesRef, orderByKey(), limitToFirst(limit + 1));
+    }
+
+    const snapshot = await get(nanniesQuery);
+
+    if (!snapshot.exists()) {
+      return { nannies: [], lastKey: null };
+    }
+
+    const nannies = [];
+    snapshot.forEach((child) => {
+      nannies.push({ id: child.key, ...child.val() });
+    });
+
+    const hasMore = nannies.length > limit;
+    if (hasMore) {
+      nannies.pop();
+    }
+
+    return {
+      nannies,
+      lastKey: hasMore ? nannies[nannies.length - 1].id : null,
+    };
+  } catch (error) {
+    console.error("Error in getNannies:", error);
+    throw error;
   }
-
-  const snapshot = await get(nanniesQuery);
-  const nannies = [];
-  snapshot.forEach((child) => {
-    nannies.push({ id: child.key, ...child.val() });
-  });
-
-  const hasMore = nannies.length > limit;
-  if (hasMore) {
-    nannies.pop();
-  }
-
-  return { nannies, lastKey: hasMore ? nannies[nannies.length - 1].id : null };
 };
 
 export const getAllNannies = async () => {
-  const nanniesRef = ref(database, "nannies");
-  const snapshot = await get(nanniesRef);
-  const nannies = [];
-  snapshot.forEach((child) => {
-    nannies.push({ id: child.key, ...child.val() });
-  });
-  return nannies;
+  try {
+    const nanniesRef = ref(database, "nannies");
+    const snapshot = await get(nanniesRef);
+
+    if (!snapshot.exists()) {
+      return [];
+    }
+
+    const nannies = [];
+    snapshot.forEach((child) => {
+      nannies.push({ id: child.key, ...child.val() });
+    });
+    return nannies;
+  } catch (error) {
+    console.error("Error in getAllNannies:", error);
+    throw error;
+  }
 };
 
 export const addToFavorites = async (userId, nannyId) => {

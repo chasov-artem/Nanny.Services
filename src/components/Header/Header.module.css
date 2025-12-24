@@ -5,14 +5,17 @@
   right: 0;
   z-index: 100;
   display: flex;
+  width: 100%;
 }
 
 .nav {
   width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 40px 80px;
+  padding: 40px 32px;
 }
 
 .navLeft {
@@ -69,7 +72,7 @@
 
 .buttonPrimary {
   padding: 8px 20px;
-  background: #F03F3B;
+  background: #f03f3b;
   color: white;
   border: none;
   border-radius: 12px;
@@ -115,4 +118,3 @@
     font-size: 14px;
   }
 }
-

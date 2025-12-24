@@ -5,27 +5,29 @@ const Hero = () => {
   return (
     <div className={styles.hero}>
       <div className={styles.heroLeft}>
-        <div className={styles.heroContent}>
-          <h1 className={styles.heroTitle}>
-            Make Life Easier for the Family:
-          </h1>
-          <p className={styles.heroSubtitle}>
-            Find Babysitters Online for All Occasions
-          </p>
-          <Link to="/nannies" className={styles.heroButton}>
-            Get started
-            <svg
-              className={styles.heroButtonIcon}
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M5 12h14M12 5l7 7-7 7" />
-            </svg>
-          </Link>
+        <div className={styles.heroLeftContainer}>
+          <div className={styles.heroContent}>
+            <h1 className={styles.heroTitle}>
+              Make Life Easier for the Family:
+            </h1>
+            <p className={styles.heroSubtitle}>
+              Find Babysitters Online for All Occasions
+            </p>
+            <Link to="/nannies" className={styles.heroButton}>
+              Get started
+              <svg
+                className={styles.heroButtonIcon}
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </Link>
+          </div>
         </div>
       </div>
       <div className={styles.heroRight}>

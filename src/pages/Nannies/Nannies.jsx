@@ -143,26 +143,27 @@ const Nannies = () => {
 
   return (
     <div className="nannies">
-      <h1 className="nannies-title">Our Nannies</h1>
       <Filters onSortChange={handleSortChange} onFilterChange={handleFilterChange} />
-      <div className="nannies-grid">
-        {displayedNannies.length > 0 ? (
-          displayedNannies.map((nanny) => <NannyCard key={nanny.id} nanny={nanny} />)
-        ) : (
-          <div className="nannies-empty">No nannies found</div>
+      <div className="nannies-content">
+        <div className="nannies-grid">
+          {displayedNannies.length > 0 ? (
+            displayedNannies.map((nanny) => <NannyCard key={nanny.id} nanny={nanny} />)
+          ) : (
+            <div className="nannies-empty">No nannies found</div>
+          )}
+        </div>
+        {!sortConfig.type && !filterConfig.price && hasMore && (
+          <div className="nannies-load-more">
+            <button
+              onClick={loadMoreNannies}
+              disabled={loadingMore}
+              className="nannies-load-more-button"
+            >
+              {loadingMore ? 'Loading...' : 'Load more'}
+            </button>
+          </div>
         )}
       </div>
-      {!sortConfig.type && !filterConfig.price && hasMore && (
-        <div className="nannies-load-more">
-          <button
-            onClick={loadMoreNannies}
-            disabled={loadingMore}
-            className="nannies-load-more-button"
-          >
-            {loadingMore ? 'Loading...' : 'Load More'}
-          </button>
-        </div>
-      )}
     </div>
   );
 };

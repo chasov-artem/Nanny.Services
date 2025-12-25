@@ -31,17 +31,17 @@ const Layout = ({ children }) => {
         <header className="layout-header">
           <nav className="layout-nav">
             <Link to="/" className="layout-logo">
-              Nanny Services
+              Nanny.Services
             </Link>
             <div className="layout-links">
-              <Link to="/" className="layout-link">
+              <Link to="/" className={`layout-link ${location.pathname === '/' ? 'active' : ''}`}>
                 Home
               </Link>
-              <Link to="/nannies" className="layout-link">
+              <Link to="/nannies" className={`layout-link ${location.pathname === '/nannies' ? 'active' : ''}`}>
                 Nannies
               </Link>
               {user && (
-                <Link to="/favorites" className="layout-link">
+                <Link to="/favorites" className={`layout-link ${location.pathname === '/favorites' ? 'active' : ''}`}>
                   Favorites
                 </Link>
               )}

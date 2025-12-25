@@ -1,13 +1,11 @@
 .nannies {
-  padding: 24px 0;
+  display: flex;
+  gap: 32px;
+  padding: 0;
 }
 
 .nannies-title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 32px;
-  color: #333;
-  text-align: center;
+  display: none;
 }
 
 .nannies-loading {
@@ -19,9 +17,13 @@
   color: #666;
 }
 
+.nannies-content {
+  flex: 1;
+}
+
 .nannies-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  display: flex;
+  flex-direction: column;
   gap: 24px;
   margin-bottom: 32px;
 }
@@ -41,19 +43,19 @@
 }
 
 .nannies-load-more-button {
-  padding: 12px 32px;
-  background-color: #667eea;
+  padding: 16px 48px;
+  background-color: #F03F3B;
   color: white;
   border: none;
-  border-radius: 8px;
-  font-size: 1rem;
+  border-radius: 12px;
+  font-size: 16px;
   font-weight: 600;
   cursor: pointer;
   transition: background-color 0.2s;
 }
 
 .nannies-load-more-button:hover:not(:disabled) {
-  background-color: #5568d3;
+  background-color: #d83531;
 }
 
 .nannies-load-more-button:disabled {
@@ -61,14 +63,13 @@
   cursor: not-allowed;
 }
 
-@media (max-width: 768px) {
-  .nannies-title {
-    font-size: 2rem;
+@media (max-width: 1024px) {
+  .nannies {
+    flex-direction: column;
   }
 
-  .nannies-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
+  .filters {
+    width: 100%;
   }
 }
 

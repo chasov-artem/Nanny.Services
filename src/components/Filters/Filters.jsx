@@ -1,89 +1,130 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import './Filters.css';
 
 const Filters = ({ onSortChange, onFilterChange }) => {
-  const [sortBy, setSortBy] = useState('');
-  const [sortOrder, setSortOrder] = useState('');
-  const [priceFilter, setPriceFilter] = useState('');
+
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [selectedOption, setSelectedOption] = useState('A to Z');
+  const dropdownRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsDropdownOpen(false);
+      }
+    };
+
+    if (isDropdownOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isDropdownOpen]);
 
   const handleSortChange = (type, order) => {
-    setSortBy(type);
-    setSortOrder(order);
     onSortChange({ type, order });
   };
 
   const handlePriceFilter = (filter) => {
-    setPriceFilter(filter);
     onFilterChange({ price: filter });
+  };
+
+  const handleOptionSelect = (option) => {
+    setSelectedOption(option);
+    setIsDropdownOpen(false);
+    
+    if (option === 'A to Z') {
+      handleSortChange('name', 'asc');
+    } else if (option === 'Z to A') {
+      handleSortChange('name', 'desc');
+    } else if (option === 'Less than 10$') {
+      handlePriceFilter('0-10');
+    } else if (option === 'Greater than 10$') {
+      handlePriceFilter('10+');
+    } else if (option === 'Popular') {
+      handleSortChange('rating', 'desc');
+    } else if (option === 'Not popular') {
+      handleSortChange('rating', 'asc');
+    } else if (option === 'Show all') {
+      onSortChange({ type: '', order: '' });
+      onFilterChange({ price: '' });
+    }
   };
 
   return (
     <div className="filters">
-      <div className="filters-group">
-        <label className="filters-label">Sort by name:</label>
-        <div className="filters-buttons">
-          <button
-            className={`filters-button ${sortBy === 'name' && sortOrder === 'asc' ? 'active' : ''}`}
-            onClick={() => handleSortChange('name', 'asc')}
-          >
-            A-Z
-          </button>
-          <button
-            className={`filters-button ${sortBy === 'name' && sortOrder === 'desc' ? 'active' : ''}`}
-            onClick={() => handleSortChange('name', 'desc')}
-          >
-            Z-A
-          </button>
-        </div>
-      </div>
-
-      <div className="filters-group">
-        <label className="filters-label">Sort by rating:</label>
-        <div className="filters-buttons">
-          <button
-            className={`filters-button ${sortBy === 'rating' && sortOrder === 'asc' ? 'active' : ''}`}
-            onClick={() => handleSortChange('rating', 'asc')}
-          >
-            Low to High
-          </button>
-          <button
-            className={`filters-button ${sortBy === 'rating' && sortOrder === 'desc' ? 'active' : ''}`}
-            onClick={() => handleSortChange('rating', 'desc')}
-          >
-            High to Low
-          </button>
-        </div>
-      </div>
-
-      <div className="filters-group">
-        <label className="filters-label">Filter by price:</label>
-        <select
-          className="filters-select"
-          value={priceFilter}
-          onChange={(e) => handlePriceFilter(e.target.value)}
-        >
-          <option value="">All prices</option>
-          <option value="0-15">$0 - $15/hour</option>
-          <option value="15-18">$15 - $18/hour</option>
-          <option value="18-20">$18 - $20/hour</option>
-          <option value="20+">$20+/hour</option>
-        </select>
-      </div>
-
-      {(sortBy || priceFilter) && (
+      <h2 className="filters-title">Filters</h2>
+      <div className="filters-dropdown-wrapper" ref={dropdownRef}>
         <button
-          className="filters-clear"
-          onClick={() => {
-            setSortBy('');
-            setSortOrder('');
-            setPriceFilter('');
-            onSortChange({ type: '', order: '' });
-            onFilterChange({ price: '' });
-          }}
+          className="filters-dropdown-button"
+          onClick={() => setIsDropdownOpen(!isDropdownOpen)}
         >
-          Clear filters
+          {selectedOption}
+          <svg
+            className={`filters-dropdown-arrow ${isDropdownOpen ? 'open' : ''}`}
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+            fill="none"
+          >
+            <path
+              d="M4 6L8 10L12 6"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
         </button>
-      )}
+        {isDropdownOpen && (
+          <div className="filters-dropdown-menu">
+            <button
+              className="filters-dropdown-item"
+              onClick={() => handleOptionSelect('A to Z')}
+            >
+              A to Z
+            </button>
+            <button
+              className="filters-dropdown-item"
+              onClick={() => handleOptionSelect('Z to A')}
+            >
+              Z to A
+            </button>
+            <button
+              className="filters-dropdown-item"
+              onClick={() => handleOptionSelect('Less than 10$')}
+            >
+              Less than 10$
+            </button>
+            <button
+              className="filters-dropdown-item"
+              onClick={() => handleOptionSelect('Greater than 10$')}
+            >
+              Greater than 10$
+            </button>
+            <button
+              className="filters-dropdown-item"
+              onClick={() => handleOptionSelect('Popular')}
+            >
+              Popular
+            </button>
+            <button
+              className="filters-dropdown-item"
+              onClick={() => handleOptionSelect('Not popular')}
+            >
+              Not popular
+            </button>
+            <button
+              className="filters-dropdown-item"
+              onClick={() => handleOptionSelect('Show all')}
+            >
+              Show all
+            </button>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

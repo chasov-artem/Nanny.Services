@@ -5,7 +5,7 @@
 }
 
 .layout-header {
-  background-color: #fff;
+  background-color: #F03F3B;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   position: sticky;
   top: 0;
@@ -13,9 +13,9 @@
 }
 
 .layout-nav {
-  max-width: 1200px;
+  max-width: 1440px;
   margin: 0 auto;
-  padding: 1rem 2rem;
+  padding: 20px 32px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -23,54 +23,80 @@
 }
 
 .layout-logo {
-  font-size: 1.5rem;
+  font-size: 24px;
   font-weight: 700;
-  color: #667eea;
+  color: white;
   text-decoration: none;
 }
 
 .layout-links {
   display: flex;
-  gap: 2rem;
+  gap: 32px;
   flex: 1;
   justify-content: center;
+  align-items: center;
 }
 
 .layout-link {
-  color: #333;
+  color: white;
   text-decoration: none;
   font-weight: 500;
-  transition: color 0.2s;
+  font-size: 16px;
+  transition: opacity 0.2s;
+  position: relative;
+  padding: 4px 0;
 }
 
 .layout-link:hover {
-  color: #667eea;
+  opacity: 0.8;
+}
+
+.layout-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 8px;
+  background-color: white;
+  border-radius: 50%;
 }
 
 .layout-auth {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 16px;
 }
 
 .layout-user {
-  color: #666;
-  font-size: 0.9rem;
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.layout-user::before {
+  content: '👤';
+  font-size: 20px;
 }
 
 .layout-button {
-  padding: 8px 16px;
-  background-color: #667eea;
+  padding: 8px 20px;
+  background-color: #F03F3B;
   color: white;
   border: none;
-  border-radius: 6px;
+  border-radius: 12px;
   cursor: pointer;
   font-weight: 500;
+  font-size: 16px;
   transition: background-color 0.2s;
 }
 
 .layout-button:hover {
-  background-color: #5568d3;
+  background-color: #d83531;
 }
 
 .loading {
@@ -83,10 +109,12 @@
 
 .layout-main {
   flex: 1;
-  max-width: 1200px;
+  max-width: 1440px;
   width: 100%;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 32px;
+  background-color: #2a2a2a;
+  min-height: calc(100vh - 80px);
 }
 
 .layout-main-full {

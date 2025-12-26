@@ -61,25 +61,32 @@ const NannyCard = ({ nanny }) => {
             <span className="nanny-card-online-dot"></span>
           </div>
           <div className="nanny-card-info">
-            <h3 className="nanny-card-name">{nanny.name}</h3>
-            <div className="nanny-card-location">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <path
-                  d="M8 8C9.1 8 10 7.1 10 6C10 4.9 9.1 4 8 4C6.9 4 6 4.9 6 6C6 7.1 6.9 8 8 8Z"
-                  fill="currentColor"
-                />
-                <path
-                  d="M8 0C4.7 0 2 2.7 2 6C2 10.5 8 16 8 16C8 16 14 10.5 14 6C14 2.7 11.3 0 8 0ZM8 8.5C6.6 8.5 5.5 7.4 5.5 6C5.5 4.6 6.6 3.5 8 3.5C9.4 3.5 10.5 4.6 10.5 6C10.5 7.4 9.4 8.5 8 8.5Z"
-                  fill="currentColor"
-                />
-              </svg>
-              <span>{nanny.location}</span>
+            <div className="nanny-card-label-text">Nanny</div>
+            <div className="nanny-card-name-row">
+              <h3 className="nanny-card-name">{nanny.name}</h3>
+              <div className="nanny-card-rating">
+                <span className="nanny-card-rating-value">{averageRating}</span>
+                <span className="nanny-card-rating-star">⭐</span>
+              </div>
             </div>
-            <div className="nanny-card-rating">
-              <span className="nanny-card-rating-value">{averageRating}</span>
-              <span className="nanny-card-rating-star">⭐</span>
+            <div className="nanny-card-meta">
+              <div className="nanny-card-location">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path
+                    d="M8 8C9.1 8 10 7.1 10 6C10 4.9 9.1 4 8 4C6.9 4 6 4.9 6 6C6 7.1 6.9 8 8 8Z"
+                    fill="currentColor"
+                  />
+                  <path
+                    d="M8 0C4.7 0 2 2.7 2 6C2 10.5 8 16 8 16C8 16 14 10.5 14 6C14 2.7 11.3 0 8 0ZM8 8.5C6.6 8.5 5.5 7.4 5.5 6C5.5 4.6 6.6 3.5 8 3.5C9.4 3.5 10.5 4.6 10.5 6C10.5 7.4 9.4 8.5 8 8.5Z"
+                    fill="currentColor"
+                  />
+                </svg>
+                <span>{nanny.location}</span>
+              </div>
+              <div className="nanny-card-price">
+                Price / 1 hour: <span className="nanny-card-price-value">${nanny.price_per_hour}</span>
+              </div>
             </div>
-            <div className="nanny-card-price">${nanny.price_per_hour}/hour</div>
           </div>
           <button
             className={`nanny-card-favorite ${isFavorite ? 'active' : ''}`}
@@ -87,7 +94,9 @@ const NannyCard = ({ nanny }) => {
             disabled={loading}
             aria-label={isFavorite ? 'Remove from favorites' : 'Add to favorites'}
           >
-            {isFavorite ? '❤️' : '🤍'}
+            <svg width="24" height="24" viewBox="0 0 24 24" fill={isFavorite ? '#F03F3B' : 'none'} stroke={isFavorite ? '#F03F3B' : '#8B8B8B'} strokeWidth="2">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+            </svg>
           </button>
         </div>
 
@@ -106,51 +115,54 @@ const NannyCard = ({ nanny }) => {
           </div>
         </div>
 
+        {nanny.characters && nanny.characters.length > 0 && (
+          <div className="nanny-card-characters-section">
+            <div className="nanny-card-characters">
+              {nanny.characters.map((char, index) => (
+                <span key={index} className="nanny-card-character">
+                  {char}
+                </span>
+              ))}
+            </div>
+          </div>
+        )}
+
+        <div className="nanny-card-section">
+          <span className="nanny-card-label">Education:</span>
+          <span className="nanny-card-education-text">{nanny.education}</span>
+        </div>
+
+        <div className="nanny-card-section">
+          <p className="nanny-card-about">{nanny.about}</p>
+        </div>
+
         {isExpanded && (
           <div className="nanny-card-expanded">
-            <div className="nanny-card-section">
-              <h4>About</h4>
-              <p>{nanny.about}</p>
-            </div>
-
-            <div className="nanny-card-section">
-              <h4>Education</h4>
-              <p>{nanny.education}</p>
-            </div>
-
-            <div className="nanny-card-section">
-              <h4>Kids Age</h4>
-              <p>{nanny.kids_age}</p>
-            </div>
-
-            {nanny.characters && nanny.characters.length > 0 && (
-              <div className="nanny-card-section">
-                <h4>Characteristics</h4>
-                <div className="nanny-card-characters">
-                  {nanny.characters.map((char, index) => (
-                    <span key={index} className="nanny-card-character">
-                      {char}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            )}
 
             {nanny.reviews && nanny.reviews.length > 0 && (
               <div className="nanny-card-section">
                 <h4>Reviews</h4>
                 <div className="nanny-card-reviews">
-                  {nanny.reviews.map((review, index) => (
-                    <div key={index} className="nanny-card-review">
-                      <div className="nanny-card-review-header">
-                        <span className="nanny-card-reviewer">{review.reviewer}</span>
-                        <span className="nanny-card-review-rating">
-                          {'⭐'.repeat(review.rating)}
-                        </span>
+                  {nanny.reviews.map((review, index) => {
+                    const reviewerInitial = review.reviewer ? review.reviewer.charAt(0).toUpperCase() : '?';
+                    return (
+                      <div key={index} className="nanny-card-review">
+                        <div className="nanny-card-review-header">
+                          <div className="nanny-card-review-avatar">
+                            {reviewerInitial}
+                          </div>
+                          <div className="nanny-card-review-info">
+                            <span className="nanny-card-reviewer">{review.reviewer}</span>
+                            <div className="nanny-card-review-rating">
+                              <span className="nanny-card-review-rating-value">{review.rating.toFixed(1)}</span>
+                              <span className="nanny-card-review-rating-star">⭐</span>
+                            </div>
+                          </div>
+                        </div>
+                        <p className="nanny-card-review-comment">{review.comment}</p>
                       </div>
-                      <p className="nanny-card-review-comment">{review.comment}</p>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               </div>
             )}
@@ -158,18 +170,22 @@ const NannyCard = ({ nanny }) => {
         )}
 
         <div className="nanny-card-actions">
-          <button
-            className="nanny-card-button"
-            onClick={() => setIsExpanded(!isExpanded)}
-          >
-            {isExpanded ? 'Show Less' : 'Read More'}
-          </button>
-          <button
-            className="nanny-card-button nanny-card-button-primary"
-            onClick={() => setIsAppointmentModalOpen(true)}
-          >
-            Make an appointment
-          </button>
+          {!isExpanded && (
+            <button
+              className="nanny-card-button"
+              onClick={() => setIsExpanded(!isExpanded)}
+            >
+              Read more
+            </button>
+          )}
+          {isExpanded && (
+            <button
+              className="nanny-card-button nanny-card-button-primary"
+              onClick={() => setIsAppointmentModalOpen(true)}
+            >
+              Make an appointment
+            </button>
+          )}
         </div>
       </div>
 

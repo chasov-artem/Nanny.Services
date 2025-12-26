@@ -10,7 +10,7 @@
   display: flex;
   align-items: flex-start;
   gap: 16px;
-  margin-bottom: 16px;
+  margin-bottom: 24px;
   position: relative;
 }
 
@@ -24,6 +24,7 @@
   height: 60px;
   border-radius: 50%;
   object-fit: cover;
+  border: 2px solid #FFE4E1;
 }
 
 .nanny-card-online-dot {
@@ -41,54 +42,85 @@
   flex: 1;
 }
 
-.nanny-card-name {
-  font-size: 20px;
-  font-weight: 600;
-  margin: 0 0 8px 0;
-  color: #333;
+.nanny-card-label-text {
+  font-size: 14px;
+  color: #8B8B8B;
+  margin-bottom: 4px;
+  font-weight: 500;
 }
 
-.nanny-card-location {
+.nanny-card-name-row {
   display: flex;
   align-items: center;
-  gap: 4px;
-  font-size: 14px;
-  color: #666;
+  gap: 16px;
   margin-bottom: 8px;
+}
+
+.nanny-card-name {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0;
+  color: #111;
 }
 
 .nanny-card-rating {
   display: flex;
   align-items: center;
   gap: 4px;
-  margin-bottom: 8px;
 }
 
 .nanny-card-rating-value {
   font-size: 16px;
   font-weight: 600;
-  color: #333;
+  color: #111;
 }
 
 .nanny-card-rating-star {
   font-size: 16px;
 }
 
+.nanny-card-meta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.nanny-card-location {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 16px;
+  color: #111;
+}
+
+.nanny-card-location svg {
+  color: #111;
+}
+
 .nanny-card-price {
   font-size: 16px;
+  color: #111;
+}
+
+.nanny-card-price-value {
+  color: #38CD3E;
   font-weight: 600;
-  color: #333;
-  margin-bottom: 8px;
 }
 
 .nanny-card-favorite {
   background: none;
   border: none;
-  font-size: 2rem;
   cursor: pointer;
   padding: 0;
   transition: transform 0.2s;
   line-height: 1;
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .nanny-card-favorite:hover:not(:disabled) {
@@ -118,20 +150,38 @@
   flex-direction: column;
   gap: 8px;
   margin-bottom: 16px;
-  padding-bottom: 16px;
-  border-bottom: 1px solid #eee;
 }
 
 .nanny-card-detail {
   display: flex;
   gap: 8px;
-  font-size: 14px;
-  color: #333;
+  font-size: 16px;
+  color: #111;
 }
 
 .nanny-card-label {
   font-weight: 600;
-  color: #333;
+  color: #111;
+}
+
+.nanny-card-characters-section {
+  margin-bottom: 16px;
+}
+
+.nanny-card-section {
+  margin-bottom: 16px;
+}
+
+.nanny-card-education-text {
+  font-size: 16px;
+  color: #111;
+}
+
+.nanny-card-about {
+  color: #111;
+  line-height: 1.5;
+  margin: 0;
+  font-size: 16px;
 }
 
 .nanny-card-expanded {
@@ -140,22 +190,11 @@
   border-top: 1px solid #eee;
 }
 
-.nanny-card-section {
-  margin-bottom: 16px;
-}
-
-.nanny-card-section h4 {
+.nanny-card-expanded .nanny-card-section h4 {
   font-size: 16px;
   font-weight: 600;
-  margin: 0 0 8px 0;
-  color: #333;
-}
-
-.nanny-card-section p {
-  color: #666;
-  line-height: 1.6;
-  margin: 0;
-  font-size: 14px;
+  margin: 0 0 12px 0;
+  color: #111;
 }
 
 .nanny-card-characters {
@@ -166,11 +205,11 @@
 }
 
 .nanny-card-character {
-  background-color: #f5f5f5;
-  padding: 4px 12px;
-  border-radius: 12px;
-  font-size: 14px;
-  color: #333;
+  background-color: #F3F3F3;
+  padding: 8px 16px;
+  border-radius: 24px;
+  font-size: 16px;
+  color: #8B8B8B;
   font-weight: 500;
 }
 
@@ -181,46 +220,77 @@
 }
 
 .nanny-card-review {
-  padding: 12px;
-  background-color: #f9f9f9;
-  border-radius: 8px;
+  padding: 0;
 }
 
 .nanny-card-review-header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  margin-bottom: 8px;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.nanny-card-review-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: #F03F3B;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.nanny-card-review-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
 }
 
 .nanny-card-reviewer {
   font-weight: 600;
-  color: #333;
+  color: #111;
+  font-size: 16px;
 }
 
 .nanny-card-review-rating {
-  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.nanny-card-review-rating-value {
+  font-size: 16px;
+  font-weight: 600;
+  color: #FFC531;
+}
+
+.nanny-card-review-rating-star {
+  font-size: 16px;
 }
 
 .nanny-card-review-comment {
-  color: #666;
+  color: #111;
   margin: 0;
   line-height: 1.5;
+  font-size: 16px;
 }
 
 .nanny-card-actions {
   display: flex;
   gap: 12px;
-  margin-top: 16px;
+  margin-top: 24px;
 }
 
 .nanny-card-button {
-  flex: 1;
-  padding: 12px 24px;
+  padding: 0;
   border: none;
   background: transparent;
   color: #F03F3B;
-  border-radius: 8px;
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
@@ -233,8 +303,16 @@
 }
 
 .nanny-card-button-primary {
+  width: 100%;
+  padding: 16px;
   background-color: #F03F3B;
   color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
   text-decoration: none;
 }
 

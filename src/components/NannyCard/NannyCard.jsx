@@ -197,6 +197,7 @@ const NannyCard = ({ nanny }) => {
         isOpen={isAppointmentModalOpen}
         onClose={() => setIsAppointmentModalOpen(false)}
         nannyName={nanny.name}
+        nanny={nanny}
       />
     </>
   );

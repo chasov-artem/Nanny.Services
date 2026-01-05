@@ -1,9 +1,13 @@
-import { Link } from 'react-router-dom';
-import styles from './Hero.module.css';
+import { Link } from "react-router-dom";
+import Header from "../Header/Header";
+import ArrowIcon from "../Icons/ArrowIcon";
+import CheckIcon from "../Icons/CheckIcon";
+import styles from "./Hero.module.css";
 
 const Hero = () => {
   return (
     <div className={styles.hero}>
+      <Header />
       <div className={styles.heroLeft}>
         <div className={styles.heroLeftContainer}>
           <div className={styles.heroContent}>
@@ -15,17 +19,7 @@ const Hero = () => {
             </p>
             <Link to="/nannies" className={styles.heroButton}>
               Get started
-              <svg
-                className={styles.heroButtonIcon}
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M5 12h14M12 5l7 7-7 7" />
-              </svg>
+              <ArrowIcon className={styles.heroButtonIcon} />
             </Link>
           </div>
         </div>
@@ -33,14 +27,7 @@ const Hero = () => {
       <div className={styles.heroRight}>
         <div className={styles.heroStatsCard}>
           <div className={styles.heroStatsIcon}>
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-            >
-              <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
+            <CheckIcon />
           </div>
           <div className={styles.heroStatsContent}>
             <p className={styles.heroStatsLabel}>Experienced nannies</p>
@@ -53,4 +40,3 @@ const Hero = () => {
 };
 
 export default Hero;
-

@@ -1,13 +1,14 @@
 .header {
   position: absolute;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
+  top: 0;
+  left: 0;
+  right: 0;
   z-index: 100;
   width: 100%;
-  max-width: 1440px;
   box-sizing: border-box;
-  padding: 0 128px;
+  padding: 20px 96px;
+  border-bottom: 1px solid rgba(251, 251, 251, 0.4);
+  border-color: #fbfbfb;
 }
 
 .nav {
@@ -16,7 +17,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 0;
   font-family: var(--font-family);
   font-weight: 400;
   font-size: 16px;

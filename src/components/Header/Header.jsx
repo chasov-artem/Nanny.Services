@@ -1,8 +1,8 @@
-import { Link } from 'react-router-dom';
-import { useAuth } from '../../context/AuthContext';
-import AuthModal from '../AuthModal/AuthModal';
-import { useState } from 'react';
-import styles from './Header.module.css';
+import { Link } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
+import AuthModal from "../AuthModal/AuthModal";
+import { useState } from "react";
+import styles from "./Header.module.css";
 
 const Header = () => {
   const { user } = useAuth();
@@ -18,18 +18,21 @@ const Header = () => {
             </Link>
           </div>
           <div className={styles.navRight}>
-            <div className={styles.links}>
+            <nav className={styles.navigation}>
               <Link to="/" className={styles.link}>
                 Home
               </Link>
               <Link to="/nannies" className={styles.link}>
                 Nannies
               </Link>
-              {user ? (
+              {user && (
                 <Link to="/favorites" className={styles.link}>
                   Favorites
                 </Link>
-              ) : (
+              )}
+            </nav>
+            <div className={styles.authButtons}>
+              {!user && (
                 <>
                   <button
                     onClick={() => setIsAuthModalOpen(true)}
@@ -58,4 +61,3 @@ const Header = () => {
 };
 
 export default Header;
-

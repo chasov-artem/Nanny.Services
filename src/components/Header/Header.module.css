@@ -1,52 +1,69 @@
 .header {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 100;
-  display: flex;
   width: 100%;
+  max-width: 1440px;
+  box-sizing: border-box;
+  padding: 0 128px;
 }
 
 .nav {
   width: 100%;
-  max-width: 1440px;
   margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 40px 32px;
+  padding: 20px 0;
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 125%;
+  letter-spacing: -0.01em;
+  box-sizing: border-box;
 }
 
 .navLeft {
-  flex: 0 0 40%;
+  /* flex: 0 0 40%; */
 }
 
 .navRight {
-  flex: 0 0 60%;
   display: flex;
-  justify-content: flex-end;
+  align-items: center;
+  gap: 92px;
 }
 
 .logo {
+  font-family: var(--font-family);
+  font-weight: 500;
   font-size: 24px;
-  font-weight: 700;
-  color: white;
+  line-height: 117%;
+  letter-spacing: -0.02em;
+  color: #fbfbfb;
   text-decoration: none;
 }
 
-.links {
+.navigation {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 40px;
+}
+
+.authButtons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .link {
-  color: #374151;
-  text-decoration: none;
+  font-family: var(--font-family);
+  font-weight: 400;
   font-size: 16px;
-  font-weight: 500;
-  transition: opacity 0.2s;
+  line-height: 125%;
+  letter-spacing: -0.01em;
+  color: #fbfbfb;
 }
 
 .link:hover {
@@ -54,32 +71,37 @@
 }
 
 .buttonSecondary {
-  padding: 8px 20px;
-  background: transparent;
-  color: #374151;
-  border: 1px solid rgba(55, 65, 81, 0.2);
-  border-radius: 12px;
-  font-size: 16px;
+  border: 1px solid rgba(251, 251, 251, 0.4);
+  border-radius: 30px;
+  padding: 14px 39px;
+  width: 124px;
+  height: 48px;
+  font-family: var(--font-family);
   font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s;
+  font-size: 16px;
+  line-height: 125%;
+  letter-spacing: -0.01em;
+  color: #fbfbfb;
 }
 
 .buttonSecondary:hover {
-  background: rgba(55, 65, 81, 0.05);
-  border-color: rgba(55, 65, 81, 0.4);
+  background: #eeeeee;
+  border-color: #b3b3b3;
+  color: black;
 }
 
 .buttonPrimary {
-  padding: 8px 20px;
+  border-radius: 30px;
+  padding: 14px 40px;
+  width: 168px;
+  height: 48px;
   background: #f03f3b;
-  color: white;
-  border: none;
-  border-radius: 12px;
-  font-size: 16px;
+  font-family: var(--font-family);
   font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s;
+  font-size: 16px;
+  line-height: 125%;
+  letter-spacing: -0.01em;
+  color: #fbfbfb;
 }
 
 .buttonPrimary:hover {
@@ -89,7 +111,7 @@
 
 @media (max-width: 1024px) {
   .nav {
-    padding: 20px 40px;
+    padding: 20px 32px;
   }
 }
 
@@ -103,9 +125,13 @@
     font-size: 20px;
   }
 
-  .links {
+  .navigation {
     gap: 12px;
     flex-wrap: wrap;
+  }
+
+  .authButtons {
+    gap: 8px;
   }
 
   .link {

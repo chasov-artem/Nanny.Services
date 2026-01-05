@@ -55,12 +55,12 @@
   gap: 8px;
   padding: 16px 32px;
   background-color: white;
-  color: #374151;
+  color: #F03F3B;
   text-decoration: none;
   border-radius: 12px;
   font-size: 18px;
   font-weight: 600;
-  border: none;
+  border: 1px solid #F03F3B;
   transition: all 0.3s;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
@@ -68,12 +68,14 @@
 .heroButton:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  background-color: #FFF5F5;
 }
 
 .heroButtonIcon {
   width: 20px;
   height: 20px;
   display: inline-block;
+  transform: rotate(45deg);
 }
 
 .heroRight {

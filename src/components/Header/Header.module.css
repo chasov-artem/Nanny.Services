@@ -11,12 +11,19 @@
   border-color: #fbfbfb;
 }
 
+.headerStatic {
+  position: relative;
+  background-color: #f03f3b;
+  border-bottom: 1px solid rgba(251, 251, 251, 0.4);
+}
+
 .nav {
   width: 100%;
   margin: 0 auto;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  justify-content: space-between;
+  gap: 20px;
   font-family: var(--font-family);
   font-weight: 400;
   font-size: 16px;
@@ -26,13 +33,15 @@
 }
 
 .navLeft {
-  /* flex: 0 0 40%; */
+  display: flex;
+  align-items: center;
 }
 
 .navRight {
   display: flex;
   align-items: center;
-  gap: 92px;
+  gap: 8px;
+  justify-content: flex-end;
 }
 
 .logo {
@@ -49,6 +58,7 @@
   display: flex;
   align-items: center;
   gap: 40px;
+  justify-content: center;
 }
 
 .authButtons {
@@ -68,6 +78,22 @@
 
 .link:hover {
   opacity: 0.7;
+}
+
+.linkActive {
+  position: relative;
+}
+
+.linkActive::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 8px;
+  background-color: #fbfbfb;
+  border-radius: 50%;
 }
 
 .buttonSecondary {
@@ -109,15 +135,73 @@
   transform: translateY(-1px);
 }
 
+.userSection {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.userAvatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background-color: #fbfbfb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.userIcon {
+  width: 24px;
+  height: 24px;
+}
+
+.userName {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 125%;
+  letter-spacing: -0.01em;
+  color: #fbfbfb;
+  white-space: nowrap;
+}
+
+.buttonLogout {
+  border: 1px solid rgba(251, 251, 251, 0.4);
+  border-radius: 30px;
+  padding: 14px 39px;
+  width: 134px;
+  height: 48px;
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 125%;
+  letter-spacing: -0.01em;
+  color: #fbfbfb;
+}
+
+.buttonLogout:hover {
+  background: #d83531;
+  transform: translateY(-1px);
+}
+
 @media (max-width: 1024px) {
-  .nav {
+  .header {
     padding: 20px 32px;
+  }
+  
+  .nav {
+    padding: 0;
   }
 }
 
 @media (max-width: 768px) {
-  .nav {
+  .header {
     padding: 16px 20px;
+  }
+  
+  .nav {
     flex-wrap: wrap;
   }
 
@@ -141,6 +225,29 @@
   .buttonSecondary,
   .buttonPrimary {
     padding: 6px 16px;
+    font-size: 14px;
+  }
+
+  .userSection {
+    gap: 8px;
+  }
+
+  .userAvatar {
+    width: 32px;
+    height: 32px;
+  }
+
+  .userAvatar svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .userName {
+    font-size: 14px;
+  }
+
+  .buttonLogout {
+    padding: 8px 16px;
     font-size: 14px;
   }
 }

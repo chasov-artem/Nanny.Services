@@ -64,10 +64,6 @@ const NannyCard = ({ nanny }) => {
             <div className="nanny-card-label-text">Nanny</div>
             <div className="nanny-card-name-row">
               <h3 className="nanny-card-name">{nanny.name}</h3>
-              <div className="nanny-card-rating">
-                <span className="nanny-card-rating-value">{averageRating}</span>
-                <span className="nanny-card-rating-star">⭐</span>
-              </div>
             </div>
             <div className="nanny-card-meta">
               <div className="nanny-card-location">
@@ -82,6 +78,11 @@ const NannyCard = ({ nanny }) => {
                   />
                 </svg>
                 <span>{nanny.location}</span>
+              </div>
+              <div className="nanny-card-rating">
+                <span>Rating: </span>
+                <span className="nanny-card-rating-value">{averageRating}</span>
+                <span className="nanny-card-rating-star">⭐</span>
               </div>
               <div className="nanny-card-price">
                 Price / 1 hour: <span className="nanny-card-price-value">${nanny.price_per_hour}</span>

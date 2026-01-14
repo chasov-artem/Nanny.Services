@@ -2,13 +2,27 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background-color: #F8F8F8;
 }
 
 .layout-main {
-  padding: 32px;
+  padding: 32px 96px;
   flex: 1;
+  background-color: #F8F8F8;
 }
 
 .layout-main-full {
   flex: 1;
+}
+
+@media (max-width: 1024px) {
+  .layout-main {
+    padding: 24px 32px;
+  }
+}
+
+@media (max-width: 768px) {
+  .layout-main {
+    padding: 16px 20px;
+  }
 }

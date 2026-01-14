@@ -20,8 +20,8 @@
 }
 
 .nanny-card-avatar {
-  width: 60px;
-  height: 60px;
+  width: 66px;
+  height: 66px;
   border-radius: 50%;
   object-fit: cover;
   border: 2px solid #FFE4E1;
@@ -29,10 +29,10 @@
 
 .nanny-card-online-dot {
   position: absolute;
-  top: 0;
-  right: 0;
-  width: 12px;
-  height: 12px;
+  bottom: 2px;
+  right: 2px;
+  width: 14px;
+  height: 14px;
   background-color: #4ade80;
   border: 2px solid white;
   border-radius: 50%;
@@ -40,6 +40,7 @@
 
 .nanny-card-info {
   flex: 1;
+  min-width: 0;
 }
 
 .nanny-card-label-text {
@@ -53,7 +54,8 @@
   display: flex;
   align-items: center;
   gap: 16px;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
 }
 
 .nanny-card-name {
@@ -61,12 +63,15 @@
   font-weight: 700;
   margin: 0;
   color: #111;
+  line-height: 1.2;
 }
 
 .nanny-card-rating {
   display: flex;
   align-items: center;
   gap: 4px;
+  font-size: 16px;
+  color: #111;
 }
 
 .nanny-card-rating-value {
@@ -84,6 +89,7 @@
   align-items: center;
   gap: 16px;
   flex-wrap: wrap;
+  margin-bottom: 16px;
 }
 
 .nanny-card-location {
@@ -96,6 +102,7 @@
 
 .nanny-card-location svg {
   color: #111;
+  flex-shrink: 0;
 }
 
 .nanny-card-price {
@@ -147,21 +154,25 @@
 
 .nanny-card-details {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   gap: 8px;
   margin-bottom: 16px;
 }
 
 .nanny-card-detail {
-  display: flex;
-  gap: 8px;
+  background-color: #F3F3F3;
+  padding: 8px 16px;
+  border-radius: 24px;
   font-size: 16px;
-  color: #111;
+  color: #8B8B8B;
+  font-weight: 500;
+  white-space: nowrap;
 }
 
 .nanny-card-label {
   font-weight: 600;
   color: #111;
+  margin-right: 4px;
 }
 
 .nanny-card-characters-section {
@@ -170,6 +181,12 @@
 
 .nanny-card-section {
   margin-bottom: 16px;
+}
+
+.nanny-card-section .nanny-card-label {
+  font-weight: 600;
+  color: #111;
+  margin-right: 8px;
 }
 
 .nanny-card-education-text {
@@ -211,6 +228,7 @@
   font-size: 16px;
   color: #8B8B8B;
   font-weight: 500;
+  white-space: nowrap;
 }
 
 .nanny-card-reviews {

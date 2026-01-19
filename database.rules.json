@@ -1,0 +1,16 @@
+{
+  "rules": {
+    "nannies": {
+      ".read": true,
+      ".write": false
+    },
+    "users": {
+      "$uid": {
+        "favorites": {
+          ".read": "$uid === auth.uid",
+          ".write": "$uid === auth.uid"
+        }
+      }
+    }
+  }
+}

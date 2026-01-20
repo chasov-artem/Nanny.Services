@@ -66,19 +66,6 @@ const NannyCard = ({ nanny }) => {
               <h3 className="nanny-card-name">{nanny.name}</h3>
             </div>
             <div className="nanny-card-meta">
-              <div className="nanny-card-location">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                  <path
-                    d="M8 8C9.1 8 10 7.1 10 6C10 4.9 9.1 4 8 4C6.9 4 6 4.9 6 6C6 7.1 6.9 8 8 8Z"
-                    fill="currentColor"
-                  />
-                  <path
-                    d="M8 0C4.7 0 2 2.7 2 6C2 10.5 8 16 8 16C8 16 14 10.5 14 6C14 2.7 11.3 0 8 0ZM8 8.5C6.6 8.5 5.5 7.4 5.5 6C5.5 4.6 6.6 3.5 8 3.5C9.4 3.5 10.5 4.6 10.5 6C10.5 7.4 9.4 8.5 8 8.5Z"
-                    fill="currentColor"
-                  />
-                </svg>
-                <span>{nanny.location}</span>
-              </div>
               <div className="nanny-card-rating">
                 <span>Rating: </span>
                 <span className="nanny-card-rating-value">{averageRating}</span>
@@ -88,6 +75,19 @@ const NannyCard = ({ nanny }) => {
                 Price / 1 hour: <span className="nanny-card-price-value">${nanny.price_per_hour}</span>
               </div>
             </div>
+          </div>
+          <div className="nanny-card-location">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path
+                d="M8 8C9.1 8 10 7.1 10 6C10 4.9 9.1 4 8 4C6.9 4 6 4.9 6 6C6 7.1 6.9 8 8 8Z"
+                fill="currentColor"
+              />
+              <path
+                d="M8 0C4.7 0 2 2.7 2 6C2 10.5 8 16 8 16C8 16 14 10.5 14 6C14 2.7 11.3 0 8 0ZM8 8.5C6.6 8.5 5.5 7.4 5.5 6C5.5 4.6 6.6 3.5 8 3.5C9.4 3.5 10.5 4.6 10.5 6C10.5 7.4 9.4 8.5 8 8.5Z"
+                fill="currentColor"
+              />
+            </svg>
+            <span>{nanny.location}</span>
           </div>
           <button
             className={`nanny-card-favorite ${isFavorite ? 'active' : ''}`}

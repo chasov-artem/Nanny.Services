@@ -31,7 +31,7 @@ const Header = () => {
             </Link>
           </div>
           <nav className={styles.navigation}>
-            <Link to="/" className={`${styles.link} ${location.pathname === '/' ? styles.linkActive : ''}`}>
+            <Link to="/" className={styles.link}>
               Home
             </Link>
             <Link to="/nannies" className={`${styles.link} ${location.pathname === '/nannies' ? styles.linkActive : ''}`}>

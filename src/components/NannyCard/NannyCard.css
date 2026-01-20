@@ -4,12 +4,13 @@
   padding: 24px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.2s;
+  width: 1184px;
 }
 
 .nanny-card-header {
   display: flex;
   align-items: flex-start;
-  gap: 16px;
+  gap: 24px;
   margin-bottom: 24px;
   position: relative;
 }
@@ -17,19 +18,27 @@
 .nanny-card-avatar-wrapper {
   position: relative;
   flex-shrink: 0;
+  border: 2px solid rgba(240, 63, 59, 0.2);
+  border-radius: 30px;
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  box-sizing: border-box;
 }
 
 .nanny-card-avatar {
-  width: 66px;
-  height: 66px;
-  border-radius: 50%;
+  border-radius: 15px;
+  width: 96px;
+  height: 96px;
   object-fit: cover;
-  border: 2px solid #FFE4E1;
 }
 
 .nanny-card-online-dot {
   position: absolute;
-  bottom: 2px;
+  top: 2px;
   right: 2px;
   width: 14px;
   height: 14px;
@@ -44,10 +53,11 @@
 }
 
 .nanny-card-label-text {
-  font-size: 14px;
-  color: #8B8B8B;
-  margin-bottom: 4px;
-  font-weight: 500;
+font-family: var(--font-family);
+font-weight: 500;
+font-size: 16px;
+line-height: 150%;
+color: #8a8a89;
 }
 
 .nanny-card-name-row {
@@ -59,11 +69,11 @@
 }
 
 .nanny-card-name {
-  font-size: 24px;
-  font-weight: 700;
-  margin: 0;
-  color: #111;
-  line-height: 1.2;
+font-family: var(--font-family);
+font-weight: 500;
+font-size: 24px;
+line-height: 100%;
+color: #11101c;
 }
 
 .nanny-card-rating {
@@ -98,6 +108,11 @@
   gap: 4px;
   font-size: 16px;
   color: #111;
+  position: absolute;
+  top: 0;
+  right: 40px;
+  white-space: nowrap;
+  z-index: 1;
 }
 
 .nanny-card-location svg {

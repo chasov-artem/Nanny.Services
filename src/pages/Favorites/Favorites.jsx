@@ -41,7 +41,7 @@ const Favorites = () => {
       {favorites.length > 0 ? (
         <div className="favorites-grid">
           {favorites.map((nanny) => (
-            <NannyCard key={nanny.id} nanny={nanny} />
+            <NannyCard key={nanny.id} nanny={nanny} onFavoriteChange={loadFavorites} />
           ))}
         </div>
       ) : (

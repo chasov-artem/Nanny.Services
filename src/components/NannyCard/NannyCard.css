@@ -38,8 +38,8 @@
 
 .nanny-card-online-dot {
   position: absolute;
-  top: 2px;
-  right: 2px;
+  top: 7px;
+  right: 10px;
   width: 14px;
   height: 14px;
   background-color: #4ade80;
@@ -64,7 +64,7 @@ color: #8a8a89;
   display: flex;
   align-items: center;
   gap: 16px;
-  margin-bottom: 12px;
+  margin-bottom: 24px;
   flex-wrap: wrap;
 }
 
@@ -84,10 +84,24 @@ color: #11101c;
   color: #111;
 }
 
+.nanny-card-rating-icon {
+  width: 16px;
+  height: 16px;
+  color: #FFC531;
+}
+
 .nanny-card-rating-value {
   font-size: 16px;
   font-weight: 600;
   color: #111;
+}
+
+.nanny-card-rating span {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  color: #11101c;
 }
 
 .nanny-card-rating-star {
@@ -97,9 +111,13 @@ color: #11101c;
 .nanny-card-meta {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 32px;
   flex-wrap: wrap;
-  margin-bottom: 16px;
+  position: absolute;
+  top: 0;
+  right: 40px;
+  margin-right: 35px;
+  white-space: nowrap;
 }
 
 .nanny-card-location {
@@ -108,16 +126,19 @@ color: #11101c;
   gap: 4px;
   font-size: 16px;
   color: #111;
-  position: absolute;
-  top: 0;
-  right: 40px;
-  white-space: nowrap;
-  z-index: 1;
 }
 
 .nanny-card-location svg {
   color: #111;
   flex-shrink: 0;
+}
+
+.nanny-card-location span {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  color: #11101c;
 }
 
 .nanny-card-price {
@@ -126,6 +147,18 @@ color: #11101c;
 }
 
 .nanny-card-price-value {
+  color: #38CD3E;
+  font-weight: 600;
+}
+
+.nanny-card-price span {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  color: #11101c;
+}
+.nanny-card-price .nanny-card-price-value {
   color: #38CD3E;
   font-weight: 600;
 }
@@ -171,17 +204,61 @@ color: #11101c;
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-bottom: 16px;
+  margin-bottom: 8px;
+}
+
+.nanny-card-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background-color: #F3F3F3;
+  padding: 8px 16px;
+  border-radius: 24px;
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  color: #8a8a89;
+  white-space: nowrap;
+  margin-bottom: 24px;
+}
+
+.nanny-card-pill + .nanny-card-pill {
+  margin-left: 8px;
+}
+
+.nanny-card-pill-label {
+  color: #8a8a89;
+}
+
+.nanny-card-pill-value {
+  color: #11101c;
 }
 
 .nanny-card-detail {
   background-color: #F3F3F3;
   padding: 8px 16px;
   border-radius: 24px;
-  font-size: 16px;
-  color: #8B8B8B;
+  font-family: var(--font-family);
   font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  color: #8a8a89;
   white-space: nowrap;
+}
+
+.nanny-card-detail .nanny-card-label {
+  color: #8a8a89;
+}
+
+.nanny-card-detail span:not(.nanny-card-label) {
+  color: #11101c;
+}
+
+.nanny-card-details .nanny-card-detail:first-child span:not(.nanny-card-label) {
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  color: #11101c;
 }
 
 .nanny-card-label {
@@ -195,7 +272,7 @@ color: #11101c;
 }
 
 .nanny-card-section {
-  margin-bottom: 16px;
+  /* margin-bottom: 14px; */
 }
 
 .nanny-card-section .nanny-card-label {
@@ -210,23 +287,17 @@ color: #11101c;
 }
 
 .nanny-card-about {
-  color: #111;
-  line-height: 1.5;
-  margin: 0;
-  font-size: 16px;
+font-family: var(--font-family);
+font-weight: 400;
+font-size: 16px;
+line-height: 125%;
+color: rgba(17, 16, 28, 0.5);
 }
 
 .nanny-card-expanded {
-  margin-top: 16px;
-  padding-top: 16px;
-  border-top: 1px solid #eee;
-}
-
-.nanny-card-expanded .nanny-card-section h4 {
-  font-size: 16px;
-  font-weight: 600;
-  margin: 0 0 12px 0;
-  color: #111;
+  margin-top: 48px;
+  padding-top: 0;
+  border-top: none;
 }
 
 .nanny-card-characters {
@@ -260,21 +331,25 @@ color: #11101c;
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
 }
 
 .nanny-card-review-avatar {
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background-color: #F03F3B;
-  color: white;
+  background: rgba(240, 63, 59, 0.2);
+  color: #f03f3b;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 18px;
   font-weight: 600;
   flex-shrink: 0;
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 100%;
 }
 
 .nanny-card-review-info {
@@ -285,50 +360,55 @@ color: #11101c;
 }
 
 .nanny-card-reviewer {
-  font-weight: 600;
-  color: #111;
-  font-size: 16px;
+font-family: var(--font-family);
+font-weight: 500;
+font-size: 16px;
+line-height: 125%;
+color: #11101c;
 }
 
 .nanny-card-review-rating {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 8px;
 }
 
-.nanny-card-review-rating-value {
-  font-size: 16px;
-  font-weight: 600;
+.nanny-card-review-rating-icon {
+  width: 16px;
+  height: 16px;
   color: #FFC531;
 }
 
-.nanny-card-review-rating-star {
-  font-size: 16px;
+.nanny-card-review-rating-value {
+font-family: var(--font-family);
+font-weight: 500;
+font-size: 14px;
+line-height: 129%;
+color: #11101c;
 }
 
 .nanny-card-review-comment {
-  color: #111;
-  margin: 0;
-  line-height: 1.5;
-  font-size: 16px;
+font-family: var(--font-family);
+font-weight: 400;
+font-size: 16px;
+line-height: 125%;
+color: rgba(17, 16, 28, 0.5);
 }
 
 .nanny-card-actions {
   display: flex;
   gap: 12px;
-  margin-top: 24px;
+  margin-top: 48px;
 }
 
 .nanny-card-button {
-  padding: 0;
-  border: none;
-  background: transparent;
-  color: #F03F3B;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s;
-  text-decoration: underline;
+font-family: var(--font-family);
+font-weight: 500;
+font-size: 16px;
+line-height: 150%;
+text-decoration: underline;
+text-decoration-skip-ink: none;
+color: #11101c;
 }
 
 .nanny-card-button:hover {
@@ -336,21 +416,23 @@ color: #11101c;
 }
 
 .nanny-card-button-primary {
-  width: 100%;
-  padding: 16px;
-  background-color: #F03F3B;
-  color: white;
-  border: none;
-  border-radius: 12px;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.2s;
-  text-decoration: none;
+border-radius: 30px;
+padding: 14px 28px;
+width: 215px;
+height: 48px;
+background: #f03f3b;
+font-family: var(--font-family);
+font-weight: 500;
+font-size: 16px;
+line-height: 125%;
+letter-spacing: -0.01em;
+color: #fbfbfb;
+text-decoration: none;
 }
 
 .nanny-card-button-primary:hover {
   background-color: #d83531;
+  color: #fbfbfb;
 }
 
 @media (max-width: 768px) {

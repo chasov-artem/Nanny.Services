@@ -98,7 +98,7 @@ export const getFavorites = async (userId) => {
   const nannies = [];
 
   for (const nannyId of favoriteIds) {
-    const nannySnapshot = await get(ref(nanniesRef, nannyId));
+    const nannySnapshot = await get(ref(database, `nannies/${nannyId}`));
     if (nannySnapshot.exists()) {
       nannies.push({ id: nannyId, ...nannySnapshot.val() });
     }

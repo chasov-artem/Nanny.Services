@@ -84,7 +84,6 @@ const AppointmentModal = ({ isOpen, onClose, nannyName, nanny }) => {
         <form onSubmit={handleSubmit(onSubmit)} className="appointment-modal-form">
           <div className="appointment-modal-row">
             <div className="appointment-modal-field">
-              <label htmlFor="address">Address</label>
               <input
                 id="address"
                 type="text"
@@ -95,7 +94,6 @@ const AppointmentModal = ({ isOpen, onClose, nannyName, nanny }) => {
             </div>
 
             <div className="appointment-modal-field">
-              <label htmlFor="phone">Phone Number</label>
               <input
                 id="phone"
                 type="tel"
@@ -109,7 +107,6 @@ const AppointmentModal = ({ isOpen, onClose, nannyName, nanny }) => {
 
           <div className="appointment-modal-row">
             <div className="appointment-modal-field">
-              <label htmlFor="childAge">Child's age</label>
               <input
                 id="childAge"
                 type="text"
@@ -120,7 +117,6 @@ const AppointmentModal = ({ isOpen, onClose, nannyName, nanny }) => {
             </div>
 
             <div className="appointment-modal-field">
-              <label htmlFor="time">Time</label>
               <div className="appointment-modal-time-wrapper">
                 <input
                   id="time"
@@ -140,7 +136,6 @@ const AppointmentModal = ({ isOpen, onClose, nannyName, nanny }) => {
 
           <div className="appointment-modal-row">
             <div className="appointment-modal-field">
-              <label htmlFor="email">Email</label>
               <input
                 id="email"
                 type="email"
@@ -151,13 +146,12 @@ const AppointmentModal = ({ isOpen, onClose, nannyName, nanny }) => {
             </div>
 
             <div className="appointment-modal-field">
-              <label htmlFor="meetingTime">Meeting time</label>
               <select
                 id="meetingTime"
                 {...register('meetingTime')}
                 className="appointment-modal-select"
               >
-                <option value="">Select time</option>
+                <option value="">Meeting time</option>
                 <option value="09:00">09 : 00</option>
                 <option value="09:30">09 : 30</option>
                 <option value="10:00">10 : 00</option>
@@ -171,7 +165,6 @@ const AppointmentModal = ({ isOpen, onClose, nannyName, nanny }) => {
           </div>
 
           <div className="appointment-modal-field">
-            <label htmlFor="parentName">Father's or mother's name</label>
             <input
               id="parentName"
               type="text"
@@ -182,7 +175,6 @@ const AppointmentModal = ({ isOpen, onClose, nannyName, nanny }) => {
           </div>
 
           <div className="appointment-modal-field">
-            <label htmlFor="comment">Comment</label>
             <textarea
               id="comment"
               {...register('comment')}

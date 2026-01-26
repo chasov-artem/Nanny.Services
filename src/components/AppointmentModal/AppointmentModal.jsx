@@ -1,17 +1,57 @@
 import { useForm } from 'react-hook-form';
+import { useRef, useState, useEffect } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { appointmentSchema } from '../../utils/validation';
+import ClockIcon from '../Icons/ClockIcon';
 import './AppointmentModal.css';
 
 const AppointmentModal = ({ isOpen, onClose, nannyName, nanny }) => {
+  const timeInputRef = useRef(null);
+  const [isMeetingTimeOpen, setIsMeetingTimeOpen] = useState(false);
+  const [selectedMeetingTime, setSelectedMeetingTime] = useState('');
+  const meetingTimeRef = useRef(null);
+
   const {
     register,
     handleSubmit,
     formState: { errors },
     reset,
+    setValue,
   } = useForm({
     resolver: yupResolver(appointmentSchema),
   });
+
+  const meetingTimes = [
+    '09:00',
+    '09:30',
+    '10:00',
+    '10:30',
+    '11:00',
+    '11:30',
+    '12:00',
+  ];
+
+  const handleMeetingTimeSelect = (time) => {
+    setSelectedMeetingTime(time);
+    setValue('time', time);
+    setIsMeetingTimeOpen(false);
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (meetingTimeRef.current && !meetingTimeRef.current.contains(event.target)) {
+        setIsMeetingTimeOpen(false);
+      }
+    };
+
+    if (isMeetingTimeOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isMeetingTimeOpen]);
 
   if (!isOpen) return null;
 
@@ -87,6 +127,7 @@ const AppointmentModal = ({ isOpen, onClose, nannyName, nanny }) => {
               <input
                 id="address"
                 type="text"
+                className="appointment-modal-input-address"
                 {...register('address')}
                 placeholder="Address"
               />
@@ -97,6 +138,7 @@ const AppointmentModal = ({ isOpen, onClose, nannyName, nanny }) => {
               <input
                 id="phone"
                 type="tel"
+                className="appointment-modal-input-phone"
                 {...register('phone')}
                 placeholder="+380"
                 defaultValue="+380"
@@ -110,6 +152,7 @@ const AppointmentModal = ({ isOpen, onClose, nannyName, nanny }) => {
               <input
                 id="childAge"
                 type="text"
+                className="appointment-modal-input-child-age"
                 {...register('childAge')}
                 placeholder="Child's age"
               />
@@ -117,18 +160,39 @@ const AppointmentModal = ({ isOpen, onClose, nannyName, nanny }) => {
             </div>
 
             <div className="appointment-modal-field">
-              <div className="appointment-modal-time-wrapper">
+              <div className="appointment-modal-time-wrapper" ref={meetingTimeRef}>
                 <input
                   id="time"
-                  type="time"
+                  type="text"
+                  ref={timeInputRef}
+                  className="appointment-modal-input-time"
                   {...register('time')}
                   placeholder="00:00"
-                  defaultValue="00:00"
+                  value={selectedMeetingTime || ''}
+                  readOnly
                 />
-                <svg className="appointment-modal-time-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <circle cx="12" cy="12" r="10"></circle>
-                  <polyline points="12 6 12 12 16 14"></polyline>
-                </svg>
+                <div 
+                  className="appointment-modal-time-icon-label"
+                  onClick={() => setIsMeetingTimeOpen(!isMeetingTimeOpen)}
+                >
+                  <ClockIcon className="appointment-modal-time-icon" />
+                </div>
+                {isMeetingTimeOpen && (
+                  <div className="appointment-modal-meeting-time-dropdown">
+                    <div className="appointment-modal-meeting-time-title">Meeting time</div>
+                    {meetingTimes.map((time) => (
+                      <div
+                        key={time}
+                        className={`appointment-modal-meeting-time-option ${
+                          selectedMeetingTime === time ? 'selected' : ''
+                        }`}
+                        onClick={() => handleMeetingTimeSelect(time)}
+                      >
+                        {time.replace(':', ' : ')}
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
               {errors.time && <span className="error">{errors.time.message}</span>}
             </div>
@@ -139,28 +203,11 @@ const AppointmentModal = ({ isOpen, onClose, nannyName, nanny }) => {
               <input
                 id="email"
                 type="email"
+                className="appointment-modal-input-email"
                 {...register('email')}
                 placeholder="Email"
               />
               {errors.email && <span className="error">{errors.email.message}</span>}
-            </div>
-
-            <div className="appointment-modal-field">
-              <select
-                id="meetingTime"
-                {...register('meetingTime')}
-                className="appointment-modal-select"
-              >
-                <option value="">Meeting time</option>
-                <option value="09:00">09 : 00</option>
-                <option value="09:30">09 : 30</option>
-                <option value="10:00">10 : 00</option>
-                <option value="10:30">10 : 30</option>
-                <option value="11:00">11 : 00</option>
-                <option value="11:30">11 : 30</option>
-                <option value="12:00">12 : 00</option>
-              </select>
-              {errors.meetingTime && <span className="error">{errors.meetingTime.message}</span>}
             </div>
           </div>
 
@@ -168,6 +215,7 @@ const AppointmentModal = ({ isOpen, onClose, nannyName, nanny }) => {
             <input
               id="parentName"
               type="text"
+              className="appointment-modal-input-parent-name"
               {...register('parentName')}
               placeholder="Father's or mother's name"
             />
@@ -177,6 +225,7 @@ const AppointmentModal = ({ isOpen, onClose, nannyName, nanny }) => {
           <div className="appointment-modal-field">
             <textarea
               id="comment"
+              className="appointment-modal-textarea-comment"
               {...register('comment')}
               placeholder="Comment"
               rows="4"

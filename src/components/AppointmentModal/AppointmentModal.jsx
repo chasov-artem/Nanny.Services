@@ -21,15 +21,13 @@ const AppointmentModal = ({ isOpen, onClose, nannyName, nanny }) => {
     resolver: yupResolver(appointmentSchema),
   });
 
-  const meetingTimes = [
-    '09:00',
-    '09:30',
-    '10:00',
-    '10:30',
-    '11:00',
-    '11:30',
-    '12:00',
-  ];
+  const meetingTimes = [];
+  for (let hour = 9; hour <= 18; hour++) {
+    meetingTimes.push(`${hour.toString().padStart(2, '0')}:00`);
+    if (hour < 18) {
+      meetingTimes.push(`${hour.toString().padStart(2, '0')}:30`);
+    }
+  }
 
   const handleMeetingTimeSelect = (time) => {
     setSelectedMeetingTime(time);
@@ -180,17 +178,19 @@ const AppointmentModal = ({ isOpen, onClose, nannyName, nanny }) => {
                 {isMeetingTimeOpen && (
                   <div className="appointment-modal-meeting-time-dropdown">
                     <div className="appointment-modal-meeting-time-title">Meeting time</div>
-                    {meetingTimes.map((time) => (
-                      <div
-                        key={time}
-                        className={`appointment-modal-meeting-time-option ${
-                          selectedMeetingTime === time ? 'selected' : ''
-                        }`}
-                        onClick={() => handleMeetingTimeSelect(time)}
-                      >
-                        {time.replace(':', ' : ')}
-                      </div>
-                    ))}
+                    <div className="appointment-modal-meeting-time-list">
+                      {meetingTimes.map((time) => (
+                        <div
+                          key={time}
+                          className={`appointment-modal-meeting-time-option ${
+                            selectedMeetingTime === time ? 'selected' : ''
+                          }`}
+                          onClick={() => handleMeetingTimeSelect(time)}
+                        >
+                          {time.replace(':', ' : ')}
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 )}
               </div>

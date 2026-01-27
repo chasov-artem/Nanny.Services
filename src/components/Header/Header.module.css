@@ -9,6 +9,8 @@
   padding: 20px 96px;
   border-bottom: 1px solid rgba(251, 251, 251, 0.4);
   border-color: #fbfbfb;
+  background: transparent;
+  backdrop-filter: blur(10px);
 }
 
 .headerStatic {
@@ -186,6 +188,91 @@
   transform: translateY(-1px);
 }
 
+.menuButton {
+  display: none;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(251, 251, 251, 0.4);
+  border-radius: 12px;
+  background: transparent;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  padding: 6px;
+  margin-left: 12px;
+}
+
+.menuButton span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: #fbfbfb;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.menuButtonActive span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.menuButtonActive span:nth-child(2) {
+  opacity: 0;
+}
+
+.menuButtonActive span:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+.mobileMenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: rgba(240, 63, 59, 0.95);
+  z-index: 200;
+  border-radius: 0 0 20px 20px;
+  padding: 20px 30px 32px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-16px);
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.mobileMenuOpen {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.mobileMenuContent {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.mobileNavigation {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mobileAuth {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mobileAuth .buttonSecondary,
+.mobileAuth .buttonPrimary,
+.mobileAuth .buttonLogout {
+  width: 100%;
+  height: 48px;
+  padding: 0;
+}
+
 @media (max-width: 1024px) {
   .header {
     padding: 20px 32px;
@@ -193,6 +280,117 @@
   
   .nav {
     padding: 0;
+  }
+}
+
+.menuButton {
+  display: none;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(251, 251, 251, 0.4);
+  border-radius: 12px;
+  background: transparent;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  padding: 6px;
+  margin-left: 12px;
+}
+
+.menuButton span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: #fbfbfb;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.menuButtonActive span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.menuButtonActive span:nth-child(2) {
+  opacity: 0;
+}
+
+.menuButtonActive span:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+.mobileMenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: rgba(240, 63, 59, 0.95);
+  z-index: 200;
+  border-radius: 0 0 20px 20px;
+  padding: 20px 30px 32px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-16px);
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.mobileMenuOpen {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.mobileMenuContent {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.mobileNavigation {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mobileAuth {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mobileAuth .buttonSecondary,
+.mobileAuth .buttonPrimary,
+.mobileAuth .buttonLogout {
+  width: 100%;
+  height: 48px;
+  padding: 0;
+}
+
+@media (max-width: 900px) {
+  .header {
+    padding: 16px 24px;
+    backdrop-filter: blur(10px);
+  }
+
+  .navigation {
+    display: none;
+  }
+
+  .authButtons {
+    display: none;
+  }
+
+  .menuButton {
+    display: flex;
+  }
+
+  .menuButton {
+    position: absolute;
+    top: 8px;
+    right: 24px;
+    margin-left: 0;
   }
 }
 
@@ -216,6 +414,10 @@
 
   .authButtons {
     gap: 8px;
+  }
+
+  .navigation {
+    display: none;
   }
 
   .link {

@@ -6,16 +6,17 @@
   max-width: 1376px;
   margin: 0 auto;
   border-radius: 30px;
+  gap: 0;
 }
 
 .heroLeft {
   flex: 1;
-  height: 736px;
+  min-height: 736px;
   background-color: #f03f3b;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 251px 64px 163px 96px;
+  padding: 220px 64px 140px 96px;
   position: relative;
   z-index: 1;
   border-radius: 30px 0 0 30px;
@@ -81,8 +82,8 @@
 }
 
 .heroRight {
-  width: 699px;
-  height: 736px;
+  flex: 1;
+  min-height: 736px;
   position: relative;
   background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
   background-image: url("/hero.png");
@@ -157,7 +158,32 @@
   color: #11101c;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1280px) {
+  .heroLeft {
+    padding: 180px 56px 150px 72px;
+    min-height: 660px;
+  }
+
+  .heroTitle {
+    font-size: 64px;
+  }
+
+  .heroSubtitle {
+    font-size: 24px;
+  }
+
+  .heroRight {
+    min-height: 660px;
+  }
+
+  .heroStatsCard {
+    bottom: 20px;
+    right: 20px;
+    padding: 20px;
+  }
+}
+
+@media (max-width: 900px) {
   .hero {
     flex-direction: column;
     border-radius: 20px;

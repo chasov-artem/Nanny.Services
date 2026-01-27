@@ -27,17 +27,19 @@ export const signInSchema = yup.object().shape({
 });
 
 export const appointmentSchema = yup.object().shape({
-  address: yup.string(),
+  address: yup.string().required('Address is required'),
   phone: yup
     .string()
-    .matches(/^\+380/, 'Phone must start with +380'),
-  childAge: yup.string(),
-  time: yup.string(),
+    .required('Phone is required')
+    .matches(/^\+380\d{9}$/, 'Phone must be in the format +380XXXXXXXXX'),
+  childAge: yup.string().required('Child age is required'),
+  time: yup.string().required('Meeting time is required'),
   email: yup
     .string()
+    .required('Email is required')
     .email('Invalid email format'),
   meetingTime: yup.string(),
-  parentName: yup.string(),
-  comment: yup.string(),
+  parentName: yup.string().required("Parent's name is required"),
+  comment: yup.string().required('Comment is required'),
 });
 

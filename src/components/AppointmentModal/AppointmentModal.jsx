@@ -125,23 +125,20 @@ const AppointmentModal = ({ isOpen, onClose, nannyName, nanny }) => {
               <input
                 id="address"
                 type="text"
-                className="appointment-modal-input-address"
+                className={`appointment-modal-input-address ${errors.address ? 'error' : ''}`}
                 {...register('address')}
                 placeholder="Address"
               />
-              {errors.address && <span className="error">{errors.address.message}</span>}
             </div>
 
             <div className="appointment-modal-field">
               <input
                 id="phone"
                 type="tel"
-                className="appointment-modal-input-phone"
+                className={`appointment-modal-input-phone ${errors.phone ? 'error' : ''}`}
                 {...register('phone')}
-                placeholder="+380"
-                defaultValue="+380"
+                placeholder="+380XXXXXXXXX"
               />
-              {errors.phone && <span className="error">{errors.phone.message}</span>}
             </div>
           </div>
 
@@ -150,11 +147,10 @@ const AppointmentModal = ({ isOpen, onClose, nannyName, nanny }) => {
               <input
                 id="childAge"
                 type="text"
-                className="appointment-modal-input-child-age"
+                className={`appointment-modal-input-child-age ${errors.childAge ? 'error' : ''}`}
                 {...register('childAge')}
                 placeholder="Child's age"
               />
-              {errors.childAge && <span className="error">{errors.childAge.message}</span>}
             </div>
 
             <div className="appointment-modal-field">
@@ -163,7 +159,7 @@ const AppointmentModal = ({ isOpen, onClose, nannyName, nanny }) => {
                   id="time"
                   type="text"
                   ref={timeInputRef}
-                  className="appointment-modal-input-time"
+                  className={`appointment-modal-input-time ${errors.time ? 'error' : ''}`}
                   {...register('time')}
                   placeholder="00:00"
                   value={selectedMeetingTime || ''}
@@ -194,7 +190,6 @@ const AppointmentModal = ({ isOpen, onClose, nannyName, nanny }) => {
                   </div>
                 )}
               </div>
-              {errors.time && <span className="error">{errors.time.message}</span>}
             </div>
           </div>
 
@@ -203,11 +198,10 @@ const AppointmentModal = ({ isOpen, onClose, nannyName, nanny }) => {
               <input
                 id="email"
                 type="email"
-                className="appointment-modal-input-email"
+                className={`appointment-modal-input-email ${errors.email ? 'error' : ''}`}
                 {...register('email')}
                 placeholder="Email"
               />
-              {errors.email && <span className="error">{errors.email.message}</span>}
             </div>
           </div>
 
@@ -215,22 +209,20 @@ const AppointmentModal = ({ isOpen, onClose, nannyName, nanny }) => {
             <input
               id="parentName"
               type="text"
-              className="appointment-modal-input-parent-name"
+              className={`appointment-modal-input-parent-name ${errors.parentName ? 'error' : ''}`}
               {...register('parentName')}
               placeholder="Father's or mother's name"
             />
-            {errors.parentName && <span className="error">{errors.parentName.message}</span>}
           </div>
 
           <div className="appointment-modal-field">
             <textarea
               id="comment"
-              className="appointment-modal-textarea-comment"
+              className={`appointment-modal-textarea-comment ${errors.comment ? 'error' : ''}`}
               {...register('comment')}
               placeholder="Comment"
               rows="4"
             />
-            {errors.comment && <span className="error">{errors.comment.message}</span>}
           </div>
 
           <div className="appointment-modal-actions">

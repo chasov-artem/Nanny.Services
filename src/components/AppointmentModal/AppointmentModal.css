@@ -146,14 +146,14 @@ color: #11101c;
   background-color: #fff;
 }
 
-.appointment-modal-field textarea {
-  resize: vertical;
+.appointment-modal-field input.error,
+.appointment-modal-field textarea.error,
+.appointment-modal-field select.error {
+  border-color: #f03f3b;
 }
 
-.appointment-modal-field .error {
-  color: #F03F3B;
-  font-size: 14px;
-  margin-top: 4px;
+.appointment-modal-field textarea {
+  resize: vertical;
 }
 
 

@@ -10,7 +10,7 @@
   border-bottom: 1px solid rgba(251, 251, 251, 0.4);
   border-color: #fbfbfb;
   background: transparent;
-  backdrop-filter: blur(10px);
+
 }
 
 .headerStatic {

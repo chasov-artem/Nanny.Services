@@ -564,8 +564,17 @@ text-decoration: none;
     font-size: 12px;
   }
 
+  .nanny-card-reviews {
+    min-width: 160px;
+  }
+
+  .nanny-card-review {
+    min-width: 160px;
+  }
+
   .nanny-card-review-comment {
     font-size: 14px;
+    min-width: 160px;
   }
 
   .nanny-card-actions {

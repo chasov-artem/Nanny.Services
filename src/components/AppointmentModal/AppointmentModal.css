@@ -12,6 +12,14 @@
   /* padding: 20px; */
 }
 
+@media (max-width: 768px) {
+  .appointment-modal-backdrop {
+    padding: 20px 16px;
+    align-items: flex-start;
+    overflow-y: auto;
+  }
+}
+
 .appointment-modal {
   position: relative;
   border-radius: 30px;
@@ -19,6 +27,7 @@
   background: #fbfbfb;
   padding: 64px;
   height: 908px;
+  box-sizing: border-box;
 }
 
 .appointment-modal-close {
@@ -45,22 +54,22 @@
 }
 
 .appointment-modal-title {
-font-family: var(--font-family);
-font-weight: 500;
-font-size: 40px;
-line-height: 120%;
-letter-spacing: -0.02em;
-color: #11101c;
-margin-bottom: 20px;
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 120%;
+  letter-spacing: -0.02em;
+  color: #11101c;
+  margin-bottom: 20px;
 }
 
 .appointment-modal-description {
-font-family: var(--font-family);
-font-weight: 400;
-font-size: 16px;
-line-height: 125%;
-color: rgba(17, 16, 28, 0.5);
-margin-bottom: 40px;
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 125%;
+  color: rgba(17, 16, 28, 0.5);
+  margin-bottom: 40px;
 }
 
 .appointment-modal-nanny {
@@ -71,9 +80,9 @@ margin-bottom: 40px;
 }
 
 .appointment-modal-nanny-avatar {
-border-radius: 15px;
-width: 44px;
-height: 44px;
+  border-radius: 15px;
+  width: 44px;
+  height: 44px;
 }
 
 .appointment-modal-nanny-info {
@@ -91,11 +100,11 @@ height: 44px;
 }
 
 .appointment-modal-nanny-name {
-font-family: var(--font-family);
-font-weight: 500;
-font-size: 16px;
-line-height: 150%;
-color: #11101c;
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  color: #11101c;
 }
 
 .appointment-modal-form {
@@ -156,64 +165,61 @@ color: #11101c;
   resize: vertical;
 }
 
-
 .appointment-modal-input-address {
   border: 1px solid rgba(17, 16, 28, 0.1);
-border-radius: 12px;
-padding: 16px 155px 16px 18px;
-width: 232px;
-height: 52px;
-
+  border-radius: 12px;
+  padding: 16px 155px 16px 18px;
+  width: 232px;
+  height: 52px;
 }
 
 .appointment-modal-input-phone {
-border: 1px solid rgba(17, 16, 28, 0.1);
-border-radius: 12px;
-padding: 16px 177px 16px 18px;
-width: 232px;
-height: 52px;
+  border: 1px solid rgba(17, 16, 28, 0.1);
+  border-radius: 12px;
+  padding: 16px 177px 16px 18px;
+  width: 232px;
+  height: 52px;
 }
 
 .appointment-modal-input-child-age {
- border: 1px solid rgba(17, 16, 28, 0.1);
-border-radius: 12px;
-padding: 16px 133px 16px 18px;
-width: 232px;
-height: 52px;
+  border: 1px solid rgba(17, 16, 28, 0.1);
+  border-radius: 12px;
+  padding: 16px 133px 16px 18px;
+  width: 232px;
+  height: 52px;
 }
 
 .appointment-modal-input-time {
-border: 1px solid rgba(17, 16, 28, 0.1);
-border-radius: 12px;
-padding: 16px 173px 16px 18px;
-width: 232px;
-height: 52px;
+  border: 1px solid rgba(17, 16, 28, 0.1);
+  border-radius: 12px;
+  padding: 16px 173px 16px 18px;
+  width: 232px;
+  height: 52px;
 }
 
 .appointment-modal-input-email {
   border: 1px solid rgba(17, 16, 28, 0.1);
-border-radius: 12px;
-padding: 16px 414px 16px 18px;
-width: 472px;
-height: 52px;
+  border-radius: 12px;
+  padding: 16px 414px 16px 18px;
+  width: 472px;
+  height: 52px;
 }
 
 .appointment-modal-input-parent-name {
   border: 1px solid rgba(17, 16, 28, 0.1);
-border-radius: 12px;
-padding: 16px 265px 16px 18px;
-width: 472px;
-height: 52px;
+  border-radius: 12px;
+  padding: 16px 265px 16px 18px;
+  width: 472px;
+  height: 52px;
 }
 
 .appointment-modal-textarea-comment {
- border: 1px solid rgba(17, 16, 28, 0.1);
-border-radius: 12px;
-padding: 16px 383px 80px 18px;
-width: 472px;
-height: 116px;
+  border: 1px solid rgba(17, 16, 28, 0.1);
+  border-radius: 12px;
+  padding: 16px 383px 80px 18px;
+  width: 472px;
+  height: 116px;
 }
-
 
 .appointment-modal-row {
   display: grid;
@@ -276,17 +282,17 @@ height: 116px;
 }
 
 .appointment-modal-button-submit {
-border-radius: 30px;
-padding: 16px 217px;
-width: 472px;
-height: 52px;
-background: #f03f3b;
-font-family: var(--font-family);
-font-weight: 500;
-font-size: 16px;
-line-height: 125%;
-letter-spacing: -0.01em;
-color: #fbfbfb;
+  border-radius: 30px;
+  padding: 16px 217px;
+  width: 472px;
+  height: 52px;
+  background: #f03f3b;
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 125%;
+  letter-spacing: -0.01em;
+  color: #fbfbfb;
 }
 
 .appointment-modal-button-submit:hover {
@@ -406,24 +412,123 @@ color: #fbfbfb;
 
 @media (max-width: 768px) {
   .appointment-modal {
-    padding: 24px;
+    padding: 40px 20px;
     max-width: 100%;
+    width: 100%;
+    height: auto;
+    max-height: calc(100vh - 40px);
+    border-radius: 20px;
+    overflow-y: auto;
+  }
+
+  .appointment-modal-close {
+    top: 12px;
+    right: 12px;
+    font-size: 20px;
+    width: 28px;
+    height: 28px;
   }
 
   .appointment-modal-title {
-    font-size: 28px;
+    font-size: 24px;
+    margin-bottom: 16px;
   }
 
   .appointment-modal-description {
+    font-size: 13px;
+    margin-bottom: 32px;
+  }
+
+  .appointment-modal-nanny {
+    margin-bottom: 32px;
+  }
+
+  .appointment-modal-nanny-avatar {
+    width: 40px;
+    height: 40px;
+  }
+
+  .appointment-modal-nanny-label {
+    font-size: 11px;
+  }
+
+  .appointment-modal-nanny-name {
     font-size: 14px;
+  }
+
+  .appointment-modal-form {
+    gap: 14px;
   }
 
   .appointment-modal-row {
     grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .appointment-modal-input-address,
+  .appointment-modal-input-phone,
+  .appointment-modal-input-child-age,
+  .appointment-modal-input-time {
+    width: 100%;
+    padding: 14px 50px 14px 16px;
+    height: 48px;
+    font-size: 14px;
+    box-sizing: border-box;
+  }
+
+  .appointment-modal-input-email,
+  .appointment-modal-input-parent-name {
+    width: 100%;
+    padding: 14px 16px;
+    height: 48px;
+    font-size: 14px;
+    box-sizing: border-box;
+  }
+
+  .appointment-modal-textarea-comment {
+    width: 100%;
+    padding: 14px 16px;
+    height: 100px;
+    font-size: 14px;
+    box-sizing: border-box;
+  }
+
+  .appointment-modal-field input::placeholder,
+  .appointment-modal-field textarea::placeholder {
+    font-size: 14px;
+  }
+
+  .appointment-modal-time-icon-label {
+    right: 14px;
+  }
+
+  .appointment-modal-meeting-time-dropdown {
+    width: 100%;
+    right: 0;
+    max-height: 150px;
+  }
+
+  .appointment-modal-meeting-time-title {
+    font-size: 14px;
+    padding: 0 12px;
+    margin-bottom: 12px;
+  }
+
+  .appointment-modal-meeting-time-option {
+    font-size: 14px;
+    width: 100%;
   }
 
   .appointment-modal-actions {
     flex-direction: column;
+    margin-top: 20px;
+  }
+
+  .appointment-modal-button-submit {
+    width: 100%;
+    padding: 14px 20px;
+    height: 48px;
+    font-size: 14px;
+    box-sizing: border-box;
   }
 }
-

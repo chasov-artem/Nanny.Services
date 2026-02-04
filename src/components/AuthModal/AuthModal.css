@@ -156,6 +156,7 @@
 
 .password-group {
   position: relative;
+  margin-bottom: 0;
 }
 
 .auth-modal-password-toggle {
@@ -183,7 +184,7 @@
 
 .auth-modal-error-banner {
   position: absolute;
-  top: calc(100% - 18px);
+  top: calc(100% + 6px);
   left: 0;
   right: 0;
   padding: 12px 16px;
@@ -194,7 +195,7 @@
   border: 1px solid rgba(175, 31, 21, 0.2);
   z-index: 10;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  margin-top: 0;
+  pointer-events: none;
 }
 
 .auth-modal-submit {
@@ -291,7 +292,7 @@
   }
 
   .auth-modal-error-banner {
-    top: calc(100% - 16px);
+    top: calc(100% + 4px);
     left: 0;
     right: 0;
     font-size: 13px;

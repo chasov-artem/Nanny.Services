@@ -128,19 +128,18 @@ const AuthModal = ({ isOpen, onClose, mode = 'login' }) => {
             >
               {showPassword ? <FiEyeOff /> : <FiEye />}
             </button>
+            {error && (
+              <div className="auth-modal-error-banner">
+                {error.includes('invalid-credential') 
+                  ? 'Invalid email or password. Please try again.' 
+                  : error.includes('email-already-in-use')
+                  ? 'This email is already registered. Please log in instead.'
+                  : error.includes('weak-password')
+                  ? 'Password is too weak. Please use a stronger password.'
+                  : error}
+              </div>
+            )}
           </div>
-
-          {error && (
-            <div className="auth-modal-error-banner">
-              {error.includes('invalid-credential') 
-                ? 'Invalid email or password. Please try again.' 
-                : error.includes('email-already-in-use')
-                ? 'This email is already registered. Please log in instead.'
-                : error.includes('weak-password')
-                ? 'Password is too weak. Please use a stronger password.'
-                : error}
-            </div>
-          )}
 
           <button type="submit" className="auth-modal-submit" disabled={loading}>
             {loading ? 'Loading...' : isSignUp ? 'Sign Up' : 'Log In'}

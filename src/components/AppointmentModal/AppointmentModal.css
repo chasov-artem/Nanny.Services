@@ -161,6 +161,12 @@
   border-color: #f03f3b;
 }
 
+.appointment-modal-error-text {
+  font-size: 13px;
+  color: #d33319;
+  margin-top: 6px;
+}
+
 .appointment-modal-field textarea {
   resize: vertical;
 }

@@ -129,6 +129,9 @@ const AppointmentModal = ({ isOpen, onClose, nannyName, nanny }) => {
                 {...register('address')}
                 placeholder="Address"
               />
+              {errors.address && (
+                <span className="appointment-modal-error-text">{errors.address.message}</span>
+              )}
             </div>
 
             <div className="appointment-modal-field">
@@ -139,6 +142,9 @@ const AppointmentModal = ({ isOpen, onClose, nannyName, nanny }) => {
                 {...register('phone')}
                 placeholder="+380XXXXXXXXX"
               />
+              {errors.phone && (
+                <span className="appointment-modal-error-text">{errors.phone.message}</span>
+              )}
             </div>
           </div>
 
@@ -151,6 +157,9 @@ const AppointmentModal = ({ isOpen, onClose, nannyName, nanny }) => {
                 {...register('childAge')}
                 placeholder="Child's age"
               />
+              {errors.childAge && (
+                <span className="appointment-modal-error-text">{errors.childAge.message}</span>
+              )}
             </div>
 
             <div className="appointment-modal-field">
@@ -190,6 +199,9 @@ const AppointmentModal = ({ isOpen, onClose, nannyName, nanny }) => {
                   </div>
                 )}
               </div>
+              {errors.time && (
+                <span className="appointment-modal-error-text">{errors.time.message}</span>
+              )}
             </div>
           </div>
 
@@ -202,6 +214,9 @@ const AppointmentModal = ({ isOpen, onClose, nannyName, nanny }) => {
                 {...register('email')}
                 placeholder="Email"
               />
+              {errors.email && (
+                <span className="appointment-modal-error-text">{errors.email.message}</span>
+              )}
             </div>
           </div>
 
@@ -213,6 +228,9 @@ const AppointmentModal = ({ isOpen, onClose, nannyName, nanny }) => {
               {...register('parentName')}
               placeholder="Father's or mother's name"
             />
+            {errors.parentName && (
+              <span className="appointment-modal-error-text">{errors.parentName.message}</span>
+            )}
           </div>
 
           <div className="appointment-modal-field">
@@ -223,6 +241,9 @@ const AppointmentModal = ({ isOpen, onClose, nannyName, nanny }) => {
               placeholder="Comment"
               rows="4"
             />
+            {errors.comment && (
+              <span className="appointment-modal-error-text">{errors.comment.message}</span>
+            )}
           </div>
 
           <div className="appointment-modal-actions">

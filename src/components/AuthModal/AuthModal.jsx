@@ -96,12 +96,9 @@ const AuthModal = ({ isOpen, onClose, mode = 'login' }) => {
                 id="name"
                 type="text"
                 {...register('name')}
-                placeholder="Name"
-                className="auth-modal-input"
+                placeholder={errors.name ? errors.name.message : "Name"}
+                className={`auth-modal-input ${errors.name ? 'auth-modal-input-error' : ''}`}
               />
-              {errors.name && (
-                <span className="auth-modal-error-text">{errors.name.message}</span>
-              )}
             </div>
           )}
 
@@ -110,12 +107,9 @@ const AuthModal = ({ isOpen, onClose, mode = 'login' }) => {
               id="email"
               type="email"
               {...register('email')}
-              placeholder="Email"
-              className="auth-modal-input"
+              placeholder={errors.email ? errors.email.message : "Email"}
+              className={`auth-modal-input ${errors.email ? 'auth-modal-input-error' : ''}`}
             />
-            {errors.email && (
-              <span className="auth-modal-error-text">{errors.email.message}</span>
-            )}
           </div>
 
           <div className="auth-modal-input-group password-group">
@@ -123,8 +117,8 @@ const AuthModal = ({ isOpen, onClose, mode = 'login' }) => {
               id="password"
               type={showPassword ? 'text' : 'password'}
               {...register('password')}
-              placeholder="Password"
-              className="auth-modal-input"
+              placeholder={errors.password ? errors.password.message : "Password"}
+              className={`auth-modal-input ${errors.password ? 'auth-modal-input-error' : ''}`}
             />
             <button
               type="button"
@@ -134,12 +128,19 @@ const AuthModal = ({ isOpen, onClose, mode = 'login' }) => {
             >
               {showPassword ? <FiEyeOff /> : <FiEye />}
             </button>
-            {errors.password && (
-              <span className="auth-modal-error-text">{errors.password.message}</span>
-            )}
           </div>
 
-          {error && <div className="auth-modal-error-banner">{error}</div>}
+          {error && (
+            <div className="auth-modal-error-banner">
+              {error.includes('invalid-credential') 
+                ? 'Invalid email or password. Please try again.' 
+                : error.includes('email-already-in-use')
+                ? 'This email is already registered. Please log in instead.'
+                : error.includes('weak-password')
+                ? 'Password is too weak. Please use a stronger password.'
+                : error}
+            </div>
+          )}
 
           <button type="submit" className="auth-modal-submit" disabled={loading}>
             {loading ? 'Loading...' : isSignUp ? 'Sign Up' : 'Log In'}

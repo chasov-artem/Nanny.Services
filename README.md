@@ -137,6 +137,23 @@ https://www.figma.com/file/u36ajEOsnwio2GDGiabVPD/Nanny-Sevices
 
 ## 🚢 Деплой
 
+### Vercel
+
+1. Підключіть репозиторій до Vercel
+2. Перейдіть у **Settings** → **Environment Variables**
+3. Додайте всі змінні оточення з префіксом `VITE_`:
+   - `VITE_FIREBASE_API_KEY`
+   - `VITE_FIREBASE_AUTH_DOMAIN`
+   - `VITE_FIREBASE_DATABASE_URL`
+   - `VITE_FIREBASE_PROJECT_ID`
+   - `VITE_FIREBASE_STORAGE_BUCKET`
+   - `VITE_FIREBASE_MESSAGING_SENDER_ID`
+   - `VITE_FIREBASE_APP_ID`
+4. Встановіть значення для **Production**, **Preview** та **Development** (або тільки Production)
+5. Після додавання змінних виконайте **Redeploy** проекту
+6. Build command: `npm run build` (встановлюється автоматично)
+7. Output directory: `dist` (встановлюється автоматично)
+
 ### Netlify
 
 1. Підключіть репозиторій до Netlify
